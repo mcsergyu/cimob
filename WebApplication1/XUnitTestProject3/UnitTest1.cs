@@ -1,7 +1,7 @@
 using System;
 using Xunit;
-using Web
-namespace XUnitTestProject1
+
+namespace XUnitTestProject3
 {
     public class UnitTest1
     {

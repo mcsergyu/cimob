@@ -10,11 +10,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using WebApplication1.Models;
-using WebApplication1.Models.ManageViewModels;
-using WebApplication1.Services;
+using Cimob.Models;
+using Cimob.Models.ManageViewModels;
+using Cimob.Services;
 
-namespace WebApplication1.Controllers
+namespace Cimob.Controllers
 {
     [Authorize]
     [Route("[controller]/[action]")]
@@ -495,7 +495,7 @@ namespace WebApplication1.Controllers
         {
             return string.Format(
                 AuthenicatorUriFormat,
-                _urlEncoder.Encode("WebApplication1"),
+                _urlEncoder.Encode("Cimob"),
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }

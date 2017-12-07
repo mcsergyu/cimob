@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WebApplication1.Data;
-using WebApplication1.Models;
-using WebApplication1.Services;
+using Cimob.Data;
+using Cimob.Models;
+using Cimob.Services;
 
-namespace WebApplication1
+namespace Cimob
 {
     public class Startup
     {

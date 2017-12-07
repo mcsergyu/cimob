@@ -2,7 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <UserSecretsId>aspnet-WebApplication1-6AC61440-2D55-4766-9B74-948909A3F3C2</UserSecretsId>
+    <UserSecretsId>aspnet-Cimob-6AC61440-2D55-4766-9B74-948909A3F3C2</UserSecretsId>
+    <AssemblyName>Cimob</AssemblyName>
+    <RootNamespace>Cimob</RootNamespace>
   </PropertyGroup>
 
 
@@ -10,6 +12,7 @@
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" PrivateAssets="All" />
+    <PackageReference Include="Moq" Version="4.7.145" />
     <PackageReference Include="xunit" Version="2.3.1" />
   </ItemGroup>
 

@@ -10,11 +10,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using WebApplication1.Models;
-using WebApplication1.Models.AccountViewModels;
-using WebApplication1.Services;
+using Cimob.Models;
+using Cimob.Models.AccountViewModels;
+using Cimob.Services;
 
-namespace WebApplication1.Controllers
+namespace Cimob.Controllers
 {
     [Authorize]
     [Route("[controller]/[action]")]
