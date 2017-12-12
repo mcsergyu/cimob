@@ -12,37 +12,8 @@ namespace Cimob.Test
 {
     class Authentication
     {
-        private AccountController _acocuntController;
-
-        [TestInitialize]
-        public void Initialization()
-        {
-            var request = new Mock<HttpRequestBase>();
-            request.Expect(r => r.HttpMethod).Returns("GET");
-            var mockHttpContext = new Mock<HttpContextBase>();
-            mockHttpContext.Expect(c => c.Request).Returns(request.Object);
-            var mockControllerContext = new ControllerContext(mockHttpContext.Object, new RouteData(), new Mock<ControllerBase>().Object);
-
-            _acocuntController = new AccountController
-            {
-                ControllerContext = mockControllerContext
-            };
-        }
-           
-        [Fact]
-        public void AccountController_Register_UserRegistered()
-        {
-            var accountController = new AccountController();
-            var registerViewModel = new RegisterViewModel
-            {
-                Email = "test@test.com",
-                Password = "123456"
-            };
-
-            var result = accountController.Register(registerViewModel).Result;
-            Assert.True(result is RedirectToRouteResult);
-            Assert.True(_accountController.ModelState.All(kvp => kvp.Key != ""));
-        }
-
+        //Tenho de testar a funcionalidades postas como requesitos  ok so depois posso fazer outra coisa 
+        // primeiro ver a funcionalidades  
+        //Segundo fazer os testes nos vamos testar pela positia 
     }
 }
