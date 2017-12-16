@@ -26,6 +26,29 @@
                 <input asp-for="ConfirmPassword" class="form-control" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <select asp-for="QuestionID" class="form-control">
+                 @foreach (Question question in ViewBag.Question)
+                 {
+                    <option value=@question.ID>@question.Description</option>
+                 }
+                </select>
+                <span asp-validation-for="QuestionID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Anwser"></label>
+                <input asp-for="Anwser" class="form-control" />
+                <span asp-validation-for="Anwser" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfilyTypeID"></label>
+                <select asp-for="ProfilyTypeID" class="form-control">
+                     @foreach (ProfileType profile in ViewBag.ProfileType)
+                {
+                    <option value=@profile.ID>@profile.Description</option>
+                }
+                </select>
+            </div>
             <button type="submit" class="btn btn-default">Register</button>
         </form>
     </div>

@@ -13,6 +13,9 @@ using Microsoft.Extensions.Options;
 using Cimob.Models;
 using Cimob.Models.AccountViewModels;
 using Cimob.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Protocols;
+using Cimob.Data;
 
 namespace Cimob.Controllers
 {
@@ -24,6 +27,7 @@ namespace Cimob.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
@@ -37,6 +41,7 @@ namespace Cimob.Controllers
             _logger = logger;
         }
 
+      
         [TempData]
         public string ErrorMessage { get; set; }
 
@@ -208,6 +213,16 @@ namespace Cimob.Controllers
         [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
         {
+            var options = new DbContextOptionsBuilder<QuestionDbContext>();
+            options.UseSqlServer("Server=tcp:cimob.database.windows.net,1433;Initial Catalog=SWCimob;Persist Security Info=False;User ID=admincimob;Password=@dmincimob1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var  _context = new QuestionDbContext(options.Options);
+            var poptions = new DbContextOptionsBuilder<ProfileTypeDbContext>();
+            poptions.UseSqlServer("Server=tcp:cimob.database.windows.net,1433;Initial Catalog=SWCimob;Persist Security Info=False;User ID=admincimob;Password=@dmincimob1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var _pcontext = new ProfileTypeDbContext(poptions.Options);
+
+            //IList<Question> questionList = r.Question.ToList<Question>();
+            ViewBag.Question = _context.Question.ToList<Question>();
+            ViewBag.ProfileType = _pcontext.ProfileType.ToList<ProfileType>();
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
@@ -220,7 +235,7 @@ namespace Cimob.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,Answer= model.Anwser, ProfileTypeID = model.ProfilyTypeID, QuestionID = model.QuestionID };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
