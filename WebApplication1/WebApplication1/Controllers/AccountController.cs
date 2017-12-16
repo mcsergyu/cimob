@@ -365,6 +365,10 @@ namespace Cimob.Controllers
         [AllowAnonymous]
         public IActionResult ForgotPassword()
         {
+            var options = new DbContextOptionsBuilder<QuestionDbContext>();
+            options.UseSqlServer("Server=tcp:cimob.database.windows.net,1433;Initial Catalog=SWCimob;Persist Security Info=False;User ID=admincimob;Password=@dmincimob1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var _context = new QuestionDbContext(options.Options);
+            ViewBag.Question = _context.Question.ToList<Question>();
             return View();
         }
 
@@ -375,7 +379,8 @@ namespace Cimob.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByEmailAsync(model.Email);
+                var users = _userManager.Users.Where(u => u.Email == model.Email && u.Answer == model.Anwser && u.QuestionID == model.QuestionID).ToArray();
+                var user = users[0];
                 if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
