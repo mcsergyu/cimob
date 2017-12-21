@@ -14,6 +14,6 @@ namespace Cimob.Models
         }
 
         public DbSet<Cimob.Models.ProfileType> ProfileType { get; set; }
-        
+
     }
 }

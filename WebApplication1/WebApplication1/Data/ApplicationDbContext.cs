@@ -10,6 +10,8 @@ namespace Cimob.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Cimob.Models.Question> Question { get; set; }
+        public DbSet<Cimob.Models.ProfileType> ProfileType { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
