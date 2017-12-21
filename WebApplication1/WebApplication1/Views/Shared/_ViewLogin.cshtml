@@ -24,6 +24,7 @@
                 @Html.DisplayNameFor(m => m.RememberMe)
             </label>
         </div>
+        <a href="#" style="color:white" data-toggle="tooltip" title="Preencha o nome de utilizar e password para reaizar login."><i class="fa fa-question-circle" aria-hidden="true"></i></a>
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
@@ -40,7 +41,16 @@
 </form>
 
 
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+
+
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
 }
+
+
+
+
 
