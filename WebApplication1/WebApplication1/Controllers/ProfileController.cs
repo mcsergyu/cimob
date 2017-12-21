@@ -102,9 +102,7 @@ namespace Cimob.Controllers
             {
                 return View(model);
             }
-
             
-
             return RedirectToAction(nameof(ChangePassword));
         }
 
