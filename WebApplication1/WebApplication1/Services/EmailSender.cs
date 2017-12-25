@@ -20,7 +20,8 @@ namespace Cimob.Services
 
         public Task SendEmailAsync(string email, string subject, string message)
         {
-            return Execute("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", subject, message, email);
+            var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
+            return Execute(apiKey, subject, message, email);
         }
 
         public Task Execute(string apiKey, string subject, string message, string email)
