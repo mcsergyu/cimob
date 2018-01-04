@@ -19,7 +19,7 @@ namespace Cimob.Models.ProfileViewModels
 
         [Required]
         [StringLength(60, ErrorMessage = "Pelo menos mais de 6 Caracteres.", MinimumLength = 6)]
-        [Display(Name = "Nome Completo?")]
+        [Display(Name = "Nome Completo")]
         public string Name{ get; set; }
         
         [Required]

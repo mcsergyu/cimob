@@ -12,6 +12,8 @@ namespace Cimob.Models.ManageViewModels
 
         public bool IsEmailConfirmed { get; set; }
 
+        public ApplicationUser CurrentUser { get; set; }
+
         [Required]
         [EmailAddress]
         public string Email { get; set; }

@@ -6,7 +6,7 @@
 
 <div class="nav-tabs-custom">
     <ul class="nav nav-tabs">
-        <li class="@ManageNavPages.IndexNavClass(ViewContext)"><a asp-action="Index">Profile</a></li>
+        <li class="@ManageNavPages.IndexNavClass(ViewContext)"><a asp-action="Index">Profile  @*<i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" title="Formulário para alterar os dados gerais do seu perfil."></i>*@</a></li>
         <li class="@ManageNavPages.ChangePasswordNavClass(ViewContext)"><a asp-action="ChangePassword">Password</a></li>
         @*@if (hasExternalLogins)
         {
