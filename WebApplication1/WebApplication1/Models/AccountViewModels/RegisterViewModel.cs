@@ -39,7 +39,7 @@ namespace Cimob.Models.AccountViewModels
 
 
         [Required]
-        [Display(Name = "Introduza o Numero de telefone")]
+        [Display(Name = "Perfil de utilizador")]
         public int ProfilyTypeID { get; set; }
 
 

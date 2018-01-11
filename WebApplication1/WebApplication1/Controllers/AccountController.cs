@@ -214,10 +214,10 @@ namespace Cimob.Controllers
         public IActionResult Register(string returnUrl = null)
         {
             var options = new DbContextOptionsBuilder<QuestionDbContext>();
-            options.UseSqlServer("Server=tcp:cimob.database.windows.net,1433;Initial Catalog=SWCimob;Persist Security Info=False;User ID=admincimob;Password=@dmincimob1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=aspnet-Cimob-teste3;Trusted_Connection=True;MultipleActiveResultSets=true");
             var  _context = new QuestionDbContext(options.Options);
             var poptions = new DbContextOptionsBuilder<ProfileTypeDbContext>();
-            poptions.UseSqlServer("Server=tcp:cimob.database.windows.net,1433;Initial Catalog=SWCimob;Persist Security Info=False;User ID=admincimob;Password=@dmincimob1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            poptions.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=aspnet-Cimob-teste3;Trusted_Connection=True;MultipleActiveResultSets=true");
             var _pcontext = new ProfileTypeDbContext(poptions.Options);
 
             //IList<Question> questionList = r.Question.ToList<Question>();
@@ -366,7 +366,7 @@ namespace Cimob.Controllers
         public IActionResult ForgotPassword()
         {
             var options = new DbContextOptionsBuilder<QuestionDbContext>();
-            options.UseSqlServer("Server=tcp:cimob.database.windows.net,1433;Initial Catalog=SWCimob;Persist Security Info=False;User ID=admincimob;Password=@dmincimob1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=aspnet-Cimob-teste3;Trusted_Connection=True;MultipleActiveResultSets=true");
             var _context = new QuestionDbContext(options.Options);
             ViewBag.Question = _context.Question.ToList<Question>();
             return View();
