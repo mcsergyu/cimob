@@ -13,7 +13,7 @@ namespace Cimob.Models
         {
         }
 
-        public DbSet<Cimob.Models.ProfileType> ProfileType { get; set; }
+        public DbSet<Cimob.Models.ProfileType> ProfileTypes { get; set; }
 
     }
 }

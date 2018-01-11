@@ -16,7 +16,7 @@ namespace Cimob.Models
         {
         }
 
-        public DbSet<Cimob.Models.Question> Question { get; set; }
+        public DbSet<Cimob.Models.Question> Questions { get; set; }
         
     }
 }

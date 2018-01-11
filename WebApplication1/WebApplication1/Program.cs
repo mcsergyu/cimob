@@ -12,6 +12,8 @@ namespace Cimob
 {
     public class Program
     {
+        public string Name { get; internal set; }
+
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();

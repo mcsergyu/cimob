@@ -10,8 +10,12 @@ namespace Cimob.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Cimob.Models.Question> Question { get; set; }
-        public DbSet<Cimob.Models.ProfileType> ProfileType { get; set; }
+        public DbSet<Cimob.Models.Question> Questions { get; set; }
+        public DbSet<Cimob.Models.ProfileType> ProfileTypes { get; set; }
+        public DbSet<Cimob.Models.Destination> Destinations { get; set; }
+        public DbSet<Cimob.Models.Entity> Entities { get; set; }
+        public DbSet<Cimob.Models.Program> Programs { get; set; }
+
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

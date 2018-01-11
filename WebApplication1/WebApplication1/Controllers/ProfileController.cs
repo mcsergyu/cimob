@@ -30,7 +30,7 @@ namespace Cimob.Controllers
         [Authorize]
         public async Task<IActionResult> Index()
         {
-            ViewBag.ProfileType = _context.ProfileType.ToList<ProfileType>();
+            ViewBag.ProfileType = _context.ProfileTypes.ToList<ProfileType>();
             var user = await _userManager.FindByNameAsync(HttpContext.User.Identity.Name);
             ViewBag.user = user;
             return View();
