@@ -23,7 +23,7 @@ namespace Cimob.Data
             }
             if (!context.ProfileTypes.Any())
             {
-                context.ProfileTypes.Add(new ProfileType { Description = "Estudante" }
+                context.ProfileTypes.Add(new ProfileType { Description = "Estudante" });
                  context.ProfileTypes.Add(new ProfileType { Description = "~Trabalhador" });
                 context.SaveChanges();
             }
