@@ -15,7 +15,7 @@ namespace Cimob.Models
         [Required(ErrorMessage = "A indicação do nome do programa é obrigatório")]
         public string Name { get; set; }
 
-
+        public int DestinationId { get; set; }
 
         [Display(Name = "Descrição")]
         [Required(ErrorMessage = "A indicação da descrição é obrigatório")]

@@ -44,6 +44,7 @@ namespace Cimob.Data
                 context.Programs.Add(new Models.Program
                 {
                     Name = "ProgramaXPTO",
+                    DestinationId=2,
                     Description = "Programa XPTO para xpto",
                     Vacancies = 12,
                     StartDate = System.DateTime.Now,
@@ -56,6 +57,7 @@ namespace Cimob.Data
                 {
                     Name = "ProgramaADVANCED",
                     Description = "Programa Avançado",
+                    DestinationId=1,
                     Vacancies = 8,
                     StartDate = System.DateTime.Now,
                     EndDate = System.DateTime.Now
