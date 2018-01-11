@@ -8,7 +8,7 @@ namespace Cimob.Models.ProgramViewModels
 {
     public class EntityViewModel
     {
-
+        [Key]
         public int EntityId { get; set; }
 
         [Required(ErrorMessage = "A indicação da entidade é obrigatório")]

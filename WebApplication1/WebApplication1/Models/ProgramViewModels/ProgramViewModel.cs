@@ -8,6 +8,10 @@ namespace Cimob.Models.ProgramViewModels
 {
     public class ProgramViewModel
     {
+
+        [Key]
+        public int ProgramId { get; set; }
+
         [Display(Name = "Nome do Programa")]
         [Required(ErrorMessage = "A indicação do nome do programa é obrigatório")]
         public string Name { get; set; }

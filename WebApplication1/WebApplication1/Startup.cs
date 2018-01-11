@@ -42,6 +42,9 @@ namespace Cimob
 
             services.AddMvc();
             services.Configure<AuthMessageSenderOptions>(Configuration);
+
+            services.AddDbContext<ProgramDbContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("ProgramDbContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
