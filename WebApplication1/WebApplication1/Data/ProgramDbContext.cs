@@ -14,6 +14,6 @@ namespace Cimob.Models
         {
         }
 
-        public DbSet<Cimob.Models.ProgramViewModels.ProgramViewModel> ProgramViewModel { get; set; }
+        public DbSet<Cimob.Models.ProgramViewModels> ProgramViewModel { get; set; }
     }
 }
