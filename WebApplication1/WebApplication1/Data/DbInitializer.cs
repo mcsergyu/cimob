@@ -24,7 +24,7 @@ namespace Cimob.Data
             if (!context.ProfileTypes.Any())
             {
                 context.ProfileTypes.Add(new ProfileType { Description = "Estudante" });
-                 context.ProfileTypes.Add(new ProfileType { Description = "~Trabalhador" });
+                 context.ProfileTypes.Add(new ProfileType { Description = "Trabalhador" });
                 context.SaveChanges();
             }
             if (!context.Destinations.Any())
@@ -35,8 +35,9 @@ namespace Cimob.Data
             }
             if (!context.Entities.Any())
             {
-                context.Entities.Add(new Entity { EntityName = "Santader" });
-                context.Entities.Add(new Entity { EntityName = "Ips" });
+                context.Entities.Add(new Entity { EntityName = "Santander" });
+                context.Entities.Add(new Entity { EntityName = "IPS" });
+
                 context.SaveChanges();
             }
             if (!context.Programs.Any())
@@ -67,8 +68,7 @@ namespace Cimob.Data
 
             }
 
-            context.Entities.Add(new Entity { EntityName = "Ips" });
-            context.SaveChanges();
+
         }
     }
 }
