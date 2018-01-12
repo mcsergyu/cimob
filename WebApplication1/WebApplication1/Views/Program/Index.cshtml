@@ -1,40 +1,126 @@
 ﻿@model IEnumerable<Cimob.Models.Program>
 
-<div class="box">
-    <div class="box-header with-border">
-        <h3 class="box-title"><b>Programas de Mobilidade</b></h3>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </th>
-         @*           <th>
-        @Html.DisplayNameFor(model => model.Description)
-    </th>*@
-                    <th>
-                        @Html.DisplayNameFor(model => model.Vacancies)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.StartDate)
-                    </th>
-       @*             <th>
-        @Html.DisplayNameFor(model => model.EndDate)
-    </th>*@
-                    <th>
-                        @Html.DisplayNameFor(model => model.DestinationId)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.EntityId)
-                    </th>
-                    <th>
-                    
-                    </th>
-                </tr>
-            </thead>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Programas de Mobilidade</h2>
+
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            @*           <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>*@
+            <th>
+                <center> @Html.DisplayNameFor(model => model.Vacancies)</center>
+</th>
+            <th>
+                <center> @Html.DisplayNameFor(model => model.StartDate)</center>
+</th>
+            @*             <th>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.DestinationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EntityId)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                @*         <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>*@
+                <td>
+                    <center> @Html.DisplayFor(modelItem => item.Vacancies)</center>
+</td>
+                <td>
+                    <center> @Html.DisplayFor(modelItem => item.StartDate)</center>
+</td>
+                @*        <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProgramDestination.Cidade)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProgramEntity.EntityName)
+                </td>
+                <td>
+
+                    <a asp-action="Details" asp-route-id="@item.ProgramId">Detalhe do programa</a>&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Clicar para ver os detalhes do programa."><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-area="" asp-controller="Home" asp-action="About">Destinos de Programas</a>&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Aceder aos destinos com programas."><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+
+
+
+
+
+
+
+
+
+
+
+@*
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><b>Programas de Mobilidade</b></h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                         @*           <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>                                                             --END COMMENT
+            <th>
+                @Html.DisplayNameFor(model => model.Vacancies)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            @*             <th>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </th>                                                           --END COMMENT
+            <th>
+                @Html.DisplayNameFor(model => model.DestinationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EntityId)
+            </th>
+            <th></th>
+                            </tr>
+                        </thead>
             <tbody>
 
                 @foreach (var item in Model)
@@ -43,38 +129,39 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
-               @*         <td>
-        @Html.DisplayFor(modelItem => item.Description)
-    </td>*@
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Vacancies)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.StartDate)
-                        </td>
-                @*        <td>
-        @Html.DisplayFor(modelItem => item.EndDate)
-    </td>*@
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ProgramDestination.Cidade) 
-                        </td>
-                        
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ProgramEntity.EntityName)
-                        </td>
-                        <td>
+                        @*         <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>                                                           --END COMMENT
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vacancies)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    @*        <td>
+                            @Html.DisplayFor(modelItem => item.EndDate)
+                        </td>                                                           --END COMMENT
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProgramDestination.Cidade)
+                    </td>
 
-                            <a asp-action="Details" asp-route-id="@item.ProgramId">Detalhe do programa</a>&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Clicar para ver os detalhes do programa."><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProgramEntity.EntityName)
+                    </td>
+                    <td>
 
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                        <a asp-action="Details" asp-route-id="@item.ProgramId">Detalhe do programa</a>&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Clicar para ver os detalhes do programa."><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+                </table>
         <a asp-area="" asp-controller="Home" asp-action="About">Destinos de Programas</a>&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Aceder aos destinos com programas."><i class="fa fa-question-circle" aria-hidden="true"></i></a>
-            
-                @*                                                                                      |
-    <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a> |
-    <a asp-area="" asp-controller="Program" asp-action="Index">Programas</a>*@
+
+        @*                                                                                      |
+            <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a> |
+            <a asp-area="" asp-controller="Program" asp-action="Index">Programas</a>                                        --END COMMENT
+        </div>
     </div>
-</div>
+*@
