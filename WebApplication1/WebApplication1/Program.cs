@@ -12,7 +12,7 @@ namespace Cimob
 {
     public class Program
     {
-        public string DestinationId { get; internal set; }
+        public string EntityId { get; internal set; }
 
         public static void Main(string[] args)
         {

@@ -48,8 +48,8 @@ namespace Cimob.Data
                     Description = "Programa XPTO para xpto",
                     Vacancies = 12,
                     StartDate = System.DateTime.Now,
-                    EndDate = System.DateTime.Now
-
+                    EndDate = System.DateTime.Now,
+                    EntityId=1
                 });
 
 
@@ -60,8 +60,8 @@ namespace Cimob.Data
                     DestinationId=1,
                     Vacancies = 8,
                     StartDate = System.DateTime.Now,
-                    EndDate = System.DateTime.Now
-
+                    EndDate = System.DateTime.Now,
+                    EntityId=2
                 });
                 context.SaveChanges();
 

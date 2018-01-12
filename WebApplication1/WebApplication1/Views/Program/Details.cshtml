@@ -22,31 +22,37 @@
     <dl class="dl-horizontal">
 
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.Description)<br />
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.DestinationId)
+            @Html.DisplayNameFor(model => model.DestinationId)<br />
         </dt>
         <dd>
             @Html.DisplayFor(model => model.ProgramDestination.Cidade) - @Html.DisplayFor(model => model.ProgramDestination.Pais)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Vacancies)
+            @Html.DisplayNameFor(model => model.EntityId)<br />
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProgramEntity.EntityName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Vacancies)<br />
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Vacancies)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
+            @Html.DisplayNameFor(model => model.StartDate)<br />
         </dt>
         <dd>
             @Html.DisplayFor(model => model.StartDate)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
+            @Html.DisplayNameFor(model => model.EndDate)<br />
         </dt>
         <dd>
             @Html.DisplayFor(model => model.EndDate)

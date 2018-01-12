@@ -20,6 +20,10 @@ namespace Cimob.Models
         [Display(Name = "Destino do programa")]
         public int DestinationId { get; set; }
 
+        [ForeignKey("Entity")]
+        [Display(Name = "Entidade Parceira")]
+        public int EntityId { get; set; }
+
         [Display(Name = "Descrição")]
         [Required(ErrorMessage = "A indicação da descrição é obrigatório")]
         public string Description { get; set; }
@@ -31,12 +35,12 @@ namespace Cimob.Models
 
 
         [DataType(DataType.Date)]
-        [Display(Name = "Data de início do programa")]
+        [Display(Name = "Início do programa")]
         [Required(ErrorMessage = "A indicação da data é obrigatório")]
         public DateTime StartDate { get; set; }
 
         [DataType(DataType.Date)]
-        [Display(Name = "Data de fim do programa")]
+        [Display(Name = "Fim do programa")]
         [Required(ErrorMessage = "A indicação da data é obrigatório")]
         public DateTime EndDate { get; set; }
 
