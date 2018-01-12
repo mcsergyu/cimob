@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,6 +16,8 @@ namespace Cimob.Models
         [Required(ErrorMessage = "A indicação do nome do programa é obrigatório")]
         public string Name { get; set; }
 
+        [ForeignKey("Destination")]
+        [Display(Name = "Destino do programa")]
         public int DestinationId { get; set; }
 
         [Display(Name = "Descrição")]
@@ -28,12 +31,12 @@ namespace Cimob.Models
 
 
         [DataType(DataType.Date)]
-        [Display(Name = "Data de início")]
+        [Display(Name = "Data de início do programa")]
         [Required(ErrorMessage = "A indicação da data é obrigatório")]
         public DateTime StartDate { get; set; }
 
         [DataType(DataType.Date)]
-        [Display(Name = "Data de início")]
+        [Display(Name = "Data de fim do programa")]
         [Required(ErrorMessage = "A indicação da data é obrigatório")]
         public DateTime EndDate { get; set; }
 

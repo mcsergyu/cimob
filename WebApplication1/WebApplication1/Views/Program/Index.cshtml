@@ -2,7 +2,7 @@
 
 <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title">Bordered Table</h3>
+        <h3 class="box-title">Programas CIMOB</h3>
     </div>
     <!-- /.box-header -->
     <div class="box-body">
@@ -12,18 +12,18 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Name)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Description)
-                    </th>
+         @*           <th>
+        @Html.DisplayNameFor(model => model.Description)
+    </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.Vacancies)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.StartDate)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.EndDate)
-                    </th>
+       @*             <th>
+        @Html.DisplayNameFor(model => model.EndDate)
+    </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.DestinationId)
                     </th>
@@ -40,29 +40,32 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
+               @*         <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.Vacancies)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.StartDate)
                         </td>
+                @*        <td>
+        @Html.DisplayFor(modelItem => item.EndDate)
+    </td>*@
                         <td>
-                            @Html.DisplayFor(modelItem => item.EndDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ProgramDestination.Cidade)
+                            @Html.DisplayFor(modelItem => item.ProgramDestination.Cidade) 
                         </td>
                         <td>
 
-                            <a asp-action="Details" asp-route-id="@item.ProgramId">Details</a> |
+                            <a asp-action="Details" asp-route-id="@item.ProgramId">Detalhe do programa</a>
 
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
+        <a asp-area="" asp-controller="Home" asp-action="About">Destinos de Programas</a> @*                                                                                      |
+    <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a> |
+    <a asp-area="" asp-controller="Program" asp-action="Index">Programas</a>*@
     </div>
 </div>
