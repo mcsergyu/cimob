@@ -52,9 +52,9 @@ namespace Cimob.Data
                     DestinationId=2,
                     Description = "Programa XPTO para xpto",
                     Vacancies = 12,
-                    StartDate = System.DateTime.Now,
-                    EndDate = System.DateTime.Now,
-                    EntityId=1,
+                    StartDate = DateTime.Parse("2018-3-1"),
+                    EndDate = DateTime.Parse("2019-3-31"),
+                    EntityId =1,
                     Bolsa=2200
                 });
 
@@ -65,9 +65,9 @@ namespace Cimob.Data
                     Description = "Programa Avançado",
                     DestinationId=1,
                     Vacancies = 8,
-                    StartDate = System.DateTime.Now,
-                    EndDate = System.DateTime.Now,
-                    EntityId=2,
+                    StartDate = DateTime.Parse("2018-4-1"),
+                    EndDate = DateTime.Parse("2018-7-31"),
+                    EntityId =2,
                     Bolsa=800
                 });
 
@@ -77,8 +77,8 @@ namespace Cimob.Data
                     Description = "Programa Erasmus",
                     DestinationId = 3,
                     Vacancies = 8,
-                    StartDate = System.DateTime.Now,
-                    EndDate = System.DateTime.Now,
+                    StartDate = DateTime.Parse("2018-3-1"),
+                    EndDate = DateTime.Parse("2018-10-31"),
                     EntityId = 2,
                     Bolsa = 1800
                 });
@@ -89,8 +89,8 @@ namespace Cimob.Data
                     Description = "Programa Iberia Tecnologia",
                     DestinationId = 1,
                     Vacancies = 8,
-                    StartDate = System.DateTime.Now,
-                    EndDate = System.DateTime.Now,
+                    StartDate = DateTime.Parse("2018-2-14"),
+                    EndDate = DateTime.Parse("2019-3-1"),
                     EntityId = 1,
                     Bolsa = 1500
                 });
