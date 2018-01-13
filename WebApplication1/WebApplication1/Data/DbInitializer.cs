@@ -31,6 +31,10 @@ namespace Cimob.Data
             {
                 context.Destinations.Add(new Destination { Pais = "Portugal", Cidade = "Lisboa" });
                 context.Destinations.Add(new Destination { Pais = "França", Cidade = "Paris" });
+                context.Destinations.Add(new Destination { Pais = "Alemanha", Cidade = "Berlim" });
+                context.Destinations.Add(new Destination { Pais = "Estados Unidos da América", Cidade = "Houston" });
+                context.Destinations.Add(new Destination { Pais = "Russia", Cidade = "Moscovo" });
+                context.Destinations.Add(new Destination { Pais = "Alemanha", Cidade = "Dusseldorf" });
                 context.SaveChanges();
             }
             if (!context.Entities.Any())
@@ -50,7 +54,8 @@ namespace Cimob.Data
                     Vacancies = 12,
                     StartDate = System.DateTime.Now,
                     EndDate = System.DateTime.Now,
-                    EntityId=1
+                    EntityId=1,
+                    Bolsa=2200
                 });
 
 
@@ -62,7 +67,32 @@ namespace Cimob.Data
                     Vacancies = 8,
                     StartDate = System.DateTime.Now,
                     EndDate = System.DateTime.Now,
-                    EntityId=2
+                    EntityId=2,
+                    Bolsa=800
+                });
+
+                context.Programs.Add(new Models.Program
+                {
+                    Name = "Erasmus+",
+                    Description = "Programa Erasmus",
+                    DestinationId = 3,
+                    Vacancies = 8,
+                    StartDate = System.DateTime.Now,
+                    EndDate = System.DateTime.Now,
+                    EntityId = 2,
+                    Bolsa = 1800
+                });
+
+                context.Programs.Add(new Models.Program
+                {
+                    Name = "IberiaCOM",
+                    Description = "Programa Iberia Tecnologia",
+                    DestinationId = 1,
+                    Vacancies = 8,
+                    StartDate = System.DateTime.Now,
+                    EndDate = System.DateTime.Now,
+                    EntityId = 1,
+                    Bolsa = 1500
                 });
                 context.SaveChanges();
 

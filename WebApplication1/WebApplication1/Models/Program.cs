@@ -44,6 +44,10 @@ namespace Cimob.Models
         [Required(ErrorMessage = "A indicação da data é obrigatório")]
         public DateTime EndDate { get; set; }
 
+        [Range(0.1, Double.PositiveInfinity, ErrorMessage = "O valor da bolsa tem de ser um valor positivo")]
+        [Display(Name = "Bolsa")]
+        public double Bolsa { get; set; }
+
         public virtual Entity ProgramEntity { get; set; }
         public virtual Destination ProgramDestination { get; set; }
     }
