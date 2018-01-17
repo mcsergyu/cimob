@@ -32,8 +32,9 @@ namespace Cimob.Controllers
             {
                 return NotFound();
             }
-
+  
             var destination = await _context.Destinations
+     
                 .SingleOrDefaultAsync(m => m.DestinationId == id);
             if (destination == null)
             {
@@ -134,6 +135,16 @@ namespace Cimob.Controllers
             return View(destination);
         }
 
+        // GET: Destination/Delete/5
+        public async Task<IActionResult> DestinationProgram(int? id)
+        {
+            var programas = await _context.Programs.Where(p => p.DestinationId == id).ToListAsync();
+            
+
+            return View(programas);
+        }
+
+
         // POST: Destination/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -151,6 +162,6 @@ namespace Cimob.Controllers
         }
 
 
-           
-    }
+
+        }
 }

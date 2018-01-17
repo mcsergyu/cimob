@@ -17,8 +17,9 @@ namespace Cimob.Data
 
             if (!context.Questions.Any())
             {
-                context.Questions.Add(new Question { Description = "Primeiro Nome?" });
-                context.Questions.Add(new Question { Description = "Nome do Animal de estimação?" });
+                context.Questions.Add(new Question { Description = "Primeiro nome da mãe?" });
+                context.Questions.Add(new Question { Description = "Nome do animal de estimação?" });
+                context.Questions.Add(new Question { Description = "Nome da professora Primária?" });
                 context.SaveChanges();
             }
             if (!context.ProfileTypes.Any())
@@ -48,9 +49,9 @@ namespace Cimob.Data
             {
                 context.Programs.Add(new Models.Program
                 {
-                    Name = "ProgramaXPTO",
+                    Name = "ProgramaXPTO 18-19",
                     DestinationId=2,
-                    Description = "Programa XPTO para xpto",
+                    Description = "Programa XPTO para xpto 2018-2019",
                     Vacancies = 12,
                     StartDate = DateTime.Parse("2018-3-1"),
                     EndDate = DateTime.Parse("2019-3-31"),
@@ -61,8 +62,8 @@ namespace Cimob.Data
 
                 context.Programs.Add(new Models.Program
                 {
-                    Name = "ProgramaADVANCED",
-                    Description = "Programa Avançado",
+                    Name = "ProgramaADVANCED 2018",
+                    Description = "Programa Avançado 2018",
                     DestinationId=1,
                     Vacancies = 8,
                     StartDate = DateTime.Parse("2018-4-1"),
@@ -73,8 +74,8 @@ namespace Cimob.Data
 
                 context.Programs.Add(new Models.Program
                 {
-                    Name = "Erasmus+",
-                    Description = "Programa Erasmus",
+                    Name = "Erasmus+ 2018",
+                    Description = "Programa Erasmus 2018",
                     DestinationId = 3,
                     Vacancies = 8,
                     StartDate = DateTime.Parse("2018-3-1"),
@@ -85,8 +86,8 @@ namespace Cimob.Data
 
                 context.Programs.Add(new Models.Program
                 {
-                    Name = "IberiaCOM",
-                    Description = "Programa Iberia Tecnologia",
+                    Name = "IberiaCOM 18-19",
+                    Description = "Programa Iberia Tecnologia 2018/2019",
                     DestinationId = 1,
                     Vacancies = 8,
                     StartDate = DateTime.Parse("2018-2-14"),
