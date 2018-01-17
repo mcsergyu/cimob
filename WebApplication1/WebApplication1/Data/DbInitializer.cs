@@ -36,12 +36,14 @@ namespace Cimob.Data
                 context.Destinations.Add(new Destination { Pais = "Estados Unidos da América", Cidade = "Houston" });
                 context.Destinations.Add(new Destination { Pais = "Russia", Cidade = "Moscovo" });
                 context.Destinations.Add(new Destination { Pais = "Alemanha", Cidade = "Dusseldorf" });
+                context.Destinations.Add(new Destination { Pais = "Macau", Cidade = "Macau" });
                 context.SaveChanges();
             }
             if (!context.Entities.Any())
             {
                 context.Entities.Add(new Entity { EntityName = "Santander" });
                 context.Entities.Add(new Entity { EntityName = "IPS" });
+                context.Entities.Add(new Entity { EntityName = "Illuminati" });
 
                 context.SaveChanges();
             }
@@ -93,6 +95,66 @@ namespace Cimob.Data
                     StartDate = DateTime.Parse("2018-2-14"),
                     EndDate = DateTime.Parse("2019-3-1"),
                     EntityId = 1,
+                    Bolsa = 1500
+                });
+
+                context.Programs.Add(new Models.Program
+                {
+                    Name = "IPMacau 18-19",
+                    Description = "Programa IPMacau 2018/2019 para Engenharia Informática",
+                    DestinationId = 7,
+                    Vacancies = 8,
+                    StartDate = DateTime.Parse("2018-2-14"),
+                    EndDate = DateTime.Parse("2019-3-1"),
+                    EntityId = 1,
+                    Bolsa = 3000
+                });
+
+                context.Programs.Add(new Models.Program
+                {
+                    Name = "TEDin",
+                    Description = "Programa TEDin - TED International 2018",
+                    DestinationId = 3,
+                    Vacancies = 8,
+                    StartDate = DateTime.Parse("2018-4-4"),
+                    EndDate = DateTime.Parse("2019-9-15"),
+                    EntityId = 1,
+                    Bolsa = 1900
+                });
+
+                context.Programs.Add(new Models.Program
+                {
+                    Name = "IberiaCOM 19-20",
+                    Description = "Programa Iberia Tecnologia 2019/2020",
+                    DestinationId = 3,
+                    Vacancies = 8,
+                    StartDate = DateTime.Parse("2019-2-14"),
+                    EndDate = DateTime.Parse("2020-3-1"),
+                    EntityId = 1,
+                    Bolsa = 2500
+                });
+
+                context.Programs.Add(new Models.Program
+                {
+                    Name = "NSA19",
+                    Description = "Programa NSA para 2019",
+                    DestinationId = 4,
+                    Vacancies = 1,
+                    StartDate = DateTime.Parse("2019-2-14"),
+                    EndDate = DateTime.Parse("2019-7-1"),
+                    EntityId = 2,
+                    Bolsa = 2500
+                });
+
+                context.Programs.Add(new Models.Program
+                {
+                    Name = "PPP2020",
+                    Description = "Programa PPP 2020",
+                    DestinationId = 3,
+                    Vacancies = 3,
+                    StartDate = DateTime.Parse("2018-2-14"),
+                    EndDate = DateTime.Parse("2020-3-1"),
+                    EntityId = 3,
                     Bolsa = 1500
                 });
                 context.SaveChanges();
