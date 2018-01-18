@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Cimob.Migrations
 {
-    public partial class Mig1 : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -104,6 +104,7 @@ namespace Cimob.Migrations
                 {
                     ProgramId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Bolsa = table.Column<double>(nullable: false),
                     Description = table.Column<string>(nullable: false),
                     DestinationId = table.Column<int>(nullable: false),
                     EndDate = table.Column<DateTime>(nullable: false),

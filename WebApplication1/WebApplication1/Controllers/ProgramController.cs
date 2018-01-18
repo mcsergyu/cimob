@@ -49,8 +49,8 @@ namespace Cimob.Controllers
         // GET: Program/Create
         public IActionResult Create()
         {
-            ViewData["DestinationId"] = new SelectList(_context.Set<Destination>(), "DestinationId", "DestinationId");
-            ViewData["EntityId"] = new SelectList(_context.Set<Entity>(), "EntityId", "EntityId");
+            ViewData["DestinationId"] = new SelectList(_context.Set<Destination>(), "DestinationId", "Cidade");
+            ViewData["EntityId"] = new SelectList(_context.Set<Entity>(), "EntityId", "EntityName");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace Cimob.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProgramId,Name,DestinationId,EntityId,Description,Vacancies,StartDate,EndDate")] Program program)
+        public async Task<IActionResult> Create([Bind("ProgramId,Name,DestinationId,EntityId,Description,Vacancies,StartDate,EndDate,Bolsa")] Program program)
         {
             if (ModelState.IsValid)
             {
@@ -67,8 +67,8 @@ namespace Cimob.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DestinationId"] = new SelectList(_context.Set<Destination>(), "DestinationId", "DestinationId", program.EntityId);
-            ViewData["EntityId"] = new SelectList(_context.Set<Entity>(), "EntityId", "EntityId", program.EntityId);
+            ViewData["DestinationId"] = new SelectList(_context.Set<Destination>(), "DestinationId", "Cidade", program.EntityId);
+            ViewData["EntityId"] = new SelectList(_context.Set<Entity>(), "EntityId", "EntityName", program.EntityId);
             return View(program);
         }
 
@@ -85,8 +85,8 @@ namespace Cimob.Controllers
             {
                 return NotFound();
             }
-            ViewData["DestinationId"] = new SelectList(_context.Set<Destination>(), "DestinationId", "DestinationId", program.DestinationId);
-            ViewData["EntityId"] = new SelectList(_context.Set<Entity>(), "EntityId", "EntityId", program.EntityId);
+            ViewData["DestinationId"] = new SelectList(_context.Set<Destination>(), "DestinationId", "Cidade", program.DestinationId);
+            ViewData["EntityId"] = new SelectList(_context.Set<Entity>(), "EntityId", "EntityName", program.EntityId);
             return View(program);
         }
 
@@ -95,7 +95,7 @@ namespace Cimob.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProgramId,Name,DestinationId,EntityId,Description,Vacancies,StartDate,EndDate")] Cimob.Models.Program program)
+        public async Task<IActionResult> Edit(int id, [Bind("ProgramId,Name,DestinationId,EntityId,Description,Vacancies,StartDate,EndDate,Bolsa")] Cimob.Models.Program program)
         {
             if (id != program.ProgramId)
             {
@@ -122,8 +122,8 @@ namespace Cimob.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DestinationId"] = new SelectList(_context.Set<Destination>(), "DestinationId", "DestinationId", program.DestinationId);
-            ViewData["EntityId"] = new SelectList(_context.Set<Entity>(), "EntityId", "EntityId", program.EntityId);
+            ViewData["DestinationId"] = new SelectList(_context.Set<Destination>(), "DestinationId", "Cidade", program.DestinationId);
+            ViewData["EntityId"] = new SelectList(_context.Set<Entity>(), "EntityId", "EntityName", program.EntityId);
             return View(program);
         }
 

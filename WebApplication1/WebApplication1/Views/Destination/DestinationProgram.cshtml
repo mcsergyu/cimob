@@ -1,17 +1,18 @@
 ﻿@model IEnumerable<Cimob.Models.Program>
-
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Programas de Mobilidade &nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Lista de programas de mobilidade ativos"><i class="fa fa-question-circle" aria-hidden="true"></i></a></h2>
+<h2>
+    Destinos de Programas de Mobilidade
+    &nbsp;
+    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Lista de programas de mobilidade ativos na cidade escolhida"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+</h2>
 
 @*<p>
         <a asp-action="Create">Create New</a>
     </p>*@
-
-
 <table class="table">
     <thead>
         <tr>
@@ -66,18 +67,14 @@
                 </td>
 
                 <td>
-                    @Html.DisplayFor(modelItem => item.ProgramEntity.EntityName)
+                    @Html.DisplayFor(modelItem => item.EntityId)
                 </td>
                 <td>
 
-                    <a asp-action="Details" asp-route-id="@item.ProgramId">Detalhe do programa</a>&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Clicar para ver os detalhes do programa."><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+                    <a asp-controller="Program" asp-action="Details" asp-route-id="@item.ProgramId">Detalhe do programa</a>&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Clicar para ver os detalhes do programa."><i class="fa fa-question-circle" aria-hidden="true"></i></a>
 
                 </td>
             </tr>
         }
     </tbody>
 </table>
-<a asp-area="" asp-controller="Destination" asp-action="Index">Destinos de Programas</a>&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Aceder aos destinos com programas."><i class="fa fa-question-circle" aria-hidden="true"></i></a>
-
-
-

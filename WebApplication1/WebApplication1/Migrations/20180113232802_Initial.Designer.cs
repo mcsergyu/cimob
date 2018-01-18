@@ -11,8 +11,8 @@ using System;
 namespace Cimob.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180112114342_Mig1")]
-    partial class Mig1
+    [Migration("20180113232802_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -133,6 +133,8 @@ namespace Cimob.Migrations
                 {
                     b.Property<int>("ProgramId")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<double>("Bolsa");
 
                     b.Property<string>("Description")
                         .IsRequired();
