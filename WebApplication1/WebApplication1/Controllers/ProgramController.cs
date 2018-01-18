@@ -22,8 +22,8 @@ namespace Cimob.Controllers
         // GET: Program
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Programs.Include(p => p.ProgramDestination).Include(p => p.ProgramEntity);  
-            return View(await _context.Programs.ToListAsync());
+            var applicationDbContext = await _context.Programs.Include(p => p.ProgramDestination).Include(p => p.ProgramEntity).ToListAsync();  
+            return View(applicationDbContext);
         }
 
         // GET: Program/Details/5
