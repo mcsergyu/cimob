@@ -50,9 +50,9 @@ namespace Cimob.Controllers
         }
 
         // GET: Candidaturas/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
-            ViewData["ProgramId"] = new SelectList(_context.Programs, "ProgramId", "Description");
+            ViewData["ProgramId"] = new SelectList(_context.Programs, "ProgramId", "Description", id);
             return View();
         }
 
@@ -77,7 +77,7 @@ namespace Cimob.Controllers
             ViewData["ProgramId"] = new SelectList(_context.Programs, "ProgramId", "Description", candidatura.ProgramId);
             return View(candidatura);
         }
-
+        /*
         // GET: Candidaturas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -95,6 +95,7 @@ namespace Cimob.Controllers
             return View(candidatura);
         }
 
+        
         // POST: Candidaturas/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -165,5 +166,6 @@ namespace Cimob.Controllers
         {
             return _context.Candidatura.Any(e => e.CandidaturaId == id);
         }
+        */
     }
 }
