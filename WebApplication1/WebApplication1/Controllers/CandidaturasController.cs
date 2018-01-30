@@ -7,22 +7,26 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Cimob.Data;
 using Cimob.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Cimob.Controllers
 {
     public class CandidaturasController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public CandidaturasController(ApplicationDbContext context)
+        public CandidaturasController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Candidaturas
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Candidatura.Include(c => c.AppliedProgram);
+            var user = _userManager.GetUserId(HttpContext.User);
+            var applicationDbContext = _context.Candidatura.Where(m => m.UserId == user).Include(c => c.AppliedProgram);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -61,6 +65,11 @@ namespace Cimob.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = _userManager.GetUserId(HttpContext.User);
+                candidatura.UserId = user;
+                candidatura.StartDate = DateTime.Now;
+                candidatura.LastStateDate = DateTime.Now;
+                candidatura.State = CandidaturaState.scheduling;
                 _context.Add(candidatura);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

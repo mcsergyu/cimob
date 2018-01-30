@@ -16,9 +16,9 @@ namespace Cimob.Models
         [Display(Name = "Programa")]
         public int ProgramId { get; set; }
 
-        [ForeignKey("User")]
+        [ForeignKey("ApplicationUser")]
         [Display(Name = "Candidato")]
-        public int UserId { get; set; }
+        public String UserId { get; set; }
 
         [DataType(DataType.Date)]
         [Display(Name = "Data de submissão")]
@@ -30,7 +30,13 @@ namespace Cimob.Models
         [Required(ErrorMessage = "A indicação da data é obrigatório")]
         public DateTime LastStateDate { get; set; }
 
+        [Display(Name = "Estado")]
+        public CandidaturaState State { get; set; }
+
+        [Display(Name = "Programa")]
         public virtual Program AppliedProgram { get; set; }
+
+        [Display(Name = "Candidato")]
         public virtual ApplicationUser SubmissionUser { get; set; }
     }
 }
