@@ -160,6 +160,8 @@ namespace Cimob.Migrations
                     b.Property<int>("ProgramId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<double>("Bolsa");
+
                     b.Property<string>("Description")
                         .IsRequired();
 
