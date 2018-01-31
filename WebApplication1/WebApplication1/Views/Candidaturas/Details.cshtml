@@ -23,6 +23,12 @@
             @Html.DisplayFor(model => model.StartDate)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.LastStateDate)
         </dt>
         <dd>
@@ -38,5 +44,10 @@
 </div>
 <div>
     @*<a asp-action="Edit" asp-route-id="@Model.CandidaturaId">Edit</a> |*@
+
+    @if (Model.State == CandidaturaState.interview || Model.State == CandidaturaState.scheduling) {
+    <text><a asp-action="Cancel" asp-route-id="@Model.CandidaturaId">Cancelar candidatura</a> |</text>
+    }
+
     <a asp-action="Index">Voltar à lista</a>
 </div>

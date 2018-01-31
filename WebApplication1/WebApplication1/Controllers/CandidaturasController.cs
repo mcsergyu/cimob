@@ -77,6 +77,36 @@ namespace Cimob.Controllers
             ViewData["ProgramId"] = new SelectList(_context.Programs, "ProgramId", "Description", candidatura.ProgramId);
             return View(candidatura);
         }
+
+        
+        public async Task<IActionResult> Cancel(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var candidatura = await _context.Candidatura
+                .Include(c => c.AppliedProgram)
+                .SingleOrDefaultAsync(m => m.CandidaturaId == id && (m.State == CandidaturaState.interview || m.State == CandidaturaState.scheduling));
+            if (candidatura == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(candidatura);
+        }
+
+        [HttpPost, ActionName("Cancel")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CancelConfirmed(int id)
+        {
+            var candidatura = await _context.Candidatura.SingleOrDefaultAsync(m => m.CandidaturaId == id);
+            candidatura.State = CandidaturaState.canceled;
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
         /*
         // GET: Candidaturas/Edit/5
         public async Task<IActionResult> Edit(int? id)
