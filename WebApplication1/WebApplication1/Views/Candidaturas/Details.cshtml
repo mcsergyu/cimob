@@ -1,0 +1,42 @@
+﻿@model Cimob.Models.Candidatura
+
+@{
+    ViewData["Title"] = "Detalhes de candidatura";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Candidatura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastStateDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastStateDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AppliedProgram)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AppliedProgram.Description)
+        </dd>
+    </dl>
+</div>
+<div>
+    @*<a asp-action="Edit" asp-route-id="@Model.CandidaturaId">Edit</a> |*@
+    <a asp-action="Index">Voltar à lista</a>
+</div>

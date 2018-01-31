@@ -29,5 +29,7 @@ namespace Cimob.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+       
+        public DbSet<Cimob.Models.Candidatura> Candidatura { get; set; }
     }
 }
