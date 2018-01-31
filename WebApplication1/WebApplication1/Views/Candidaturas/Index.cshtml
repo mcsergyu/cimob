@@ -44,9 +44,9 @@
                 @Html.DisplayFor(modelItem => item.LastStateDate)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CandidaturaId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CandidaturaId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CandidaturaId">Delete</a>
+                @*<a asp-action="Edit" asp-route-id="@item.CandidaturaId">Edit</a> |*@
+                <a asp-action="Details" asp-route-id="@item.CandidaturaId">Detalhes</a> @*|
+                <a asp-action="Delete" asp-route-id="@item.CandidaturaId">Delete</a>*@
             </td>
         </tr>
 }
