@@ -102,7 +102,7 @@ namespace Cimob.Controllers
             candidatura.State = CandidaturaState.interview;
             _context.Update(candidatura);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Details", "Candidaturas", candidatura.CandidaturaId);
+            return RedirectToAction("Details", "Candidaturas", new { id = candidatura.CandidaturaId });
         }
         /*
         // GET: Interviews/Delete/5
