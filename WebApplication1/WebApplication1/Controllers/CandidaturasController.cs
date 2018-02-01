@@ -65,12 +65,20 @@ namespace Cimob.Controllers
         {
             if (ModelState.IsValid)
             {
+                var programName = _context.Programs.SingleOrDefault(p => p.ProgramId == candidatura.ProgramId).Name;
+                var interview = new Interview() { Description = "Descrição do contexto da entrevista relativa ao programa " + programName };
+                interview.StartDate = DateTime.Now.AddDays(-1);
+                _context.Add(interview);
+                await _context.SaveChangesAsync();
                 var user = _userManager.GetUserId(HttpContext.User);
                 candidatura.UserId = user;
                 candidatura.StartDate = DateTime.Now;
                 candidatura.LastStateDate = DateTime.Now;
                 candidatura.State = CandidaturaState.scheduling;
+                candidatura.InterviewId = interview.InterviewId;
                 _context.Add(candidatura);
+                await _context.SaveChangesAsync();
+                interview.CandidaturaId = candidatura.CandidaturaId;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

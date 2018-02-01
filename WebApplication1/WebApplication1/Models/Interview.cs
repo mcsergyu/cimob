@@ -11,8 +11,6 @@ namespace Cimob.Models
     {
         public int InterviewId { get; set; }
 
-        [ForeignKey("Candidatura")]
-        [Display(Name = "Candidatura")]
         public int CandidaturaId { get; set; }
 
         [Display(Name = "Descrição")]
@@ -20,8 +18,12 @@ namespace Cimob.Models
         public String Description { get; set; }
 
         [Display(Name = "Data Agendada")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime StartDate { get; set; }
 
+        [Display(Name = "Confirmada")]
         public Boolean Confirmed { get; set; }
+
     }
 }

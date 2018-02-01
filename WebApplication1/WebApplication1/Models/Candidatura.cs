@@ -20,6 +20,10 @@ namespace Cimob.Models
         [Display(Name = "Candidato")]
         public String UserId { get; set; }
 
+        [ForeignKey("Entrevista")]
+        [Display(Name = "Entrevista")]
+        public int InterviewId { get; set; }
+
         [DataType(DataType.Date)]
         [Display(Name = "Data de submissão")]
         [Required(ErrorMessage = "A indicação da data é obrigatório")]
@@ -38,5 +42,8 @@ namespace Cimob.Models
 
         [Display(Name = "Candidato")]
         public virtual ApplicationUser SubmissionUser { get; set; }
+
+        [Display(Name = "Entrevista")]
+        public virtual Interview Entrevista { get; set; }
     }
 }

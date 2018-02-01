@@ -10,12 +10,14 @@
     <h4>Candidatura</h4>
     <hr />
     <dl class="dl-horizontal">
+        @*
         <dt>
             @Html.DisplayNameFor(model => model.UserId)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.UserId)
         </dd>
+        *@
         <dt>
             @Html.DisplayNameFor(model => model.StartDate)
         </dt>
@@ -45,8 +47,13 @@
 <div>
     @*<a asp-action="Edit" asp-route-id="@Model.CandidaturaId">Edit</a> |*@
 
-    @if (Model.State == CandidaturaState.interview || Model.State == CandidaturaState.scheduling) {
-    <text><a asp-action="Cancel" asp-route-id="@Model.CandidaturaId">Cancelar candidatura</a> |</text>
+    @if (Model.State == CandidaturaState.scheduling)
+    {
+        <text><a href="/Interviews/Edit/@Model.InterviewId">Agendar entrevista</a> |</text>
+        <text><a asp-action="Cancel" asp-route-id="@Model.CandidaturaId">Cancelar candidatura</a> |</text>
+    }
+    @if (Model.State == CandidaturaState.interview) {
+        <text><a asp-action="Cancel" asp-route-id="@Model.CandidaturaId">Cancelar candidatura</a> |</text>
     }
 
     <a asp-action="Index">Voltar à lista</a>

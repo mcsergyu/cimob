@@ -12,9 +12,10 @@ using System;
 namespace Cimob.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180201152117_add_Interview_model_3")]
+    partial class add_Interview_model_3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,8 +92,6 @@ namespace Cimob.Migrations
                     b.Property<int>("CandidaturaId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("InterviewId");
-
                     b.Property<DateTime>("LastStateDate");
 
                     b.Property<int>("ProgramId");
@@ -106,8 +105,6 @@ namespace Cimob.Migrations
                     b.Property<string>("UserId");
 
                     b.HasKey("CandidaturaId");
-
-                    b.HasIndex("InterviewId");
 
                     b.HasIndex("ProgramId");
 
@@ -160,6 +157,8 @@ namespace Cimob.Migrations
                     b.Property<DateTime>("StartDate");
 
                     b.HasKey("InterviewId");
+
+                    b.HasIndex("CandidaturaId");
 
                     b.ToTable("Interview");
                 });
@@ -349,11 +348,6 @@ namespace Cimob.Migrations
 
             modelBuilder.Entity("Cimob.Models.Candidatura", b =>
                 {
-                    b.HasOne("Cimob.Models.Interview", "Entrevista")
-                        .WithMany()
-                        .HasForeignKey("InterviewId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("Cimob.Models.Program", "AppliedProgram")
                         .WithMany()
                         .HasForeignKey("ProgramId")
@@ -362,6 +356,14 @@ namespace Cimob.Migrations
                     b.HasOne("Cimob.Models.ApplicationUser", "SubmissionUser")
                         .WithMany()
                         .HasForeignKey("SubmissionUserId");
+                });
+
+            modelBuilder.Entity("Cimob.Models.Interview", b =>
+                {
+                    b.HasOne("Cimob.Models.Candidatura", "Candidatura")
+                        .WithMany()
+                        .HasForeignKey("CandidaturaId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Cimob.Models.Program", b =>

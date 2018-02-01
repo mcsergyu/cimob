@@ -31,5 +31,7 @@ namespace Cimob.Data
         }
        
         public DbSet<Cimob.Models.Candidatura> Candidatura { get; set; }
+       
+        public DbSet<Cimob.Models.Interview> Interview { get; set; }
     }
 }
