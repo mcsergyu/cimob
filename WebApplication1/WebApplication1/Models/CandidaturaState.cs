@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Cimob.Models
 {
+    /// <summary>
+    /// Implementaion of the various possible Candidatura states
+    /// </summary>
+    /// <remarks></remarks>
     public enum CandidaturaState
     {
         [Display(Name = "Aguarda agendamento")]
