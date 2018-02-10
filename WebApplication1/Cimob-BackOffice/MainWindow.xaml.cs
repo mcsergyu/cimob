@@ -44,7 +44,7 @@ namespace Cimob_BackOffice
 
         private void ListBoxProgramas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            
         }
 
         private void MenuItem_ClickSair(object sender, RoutedEventArgs e)
@@ -66,6 +66,21 @@ namespace Cimob_BackOffice
         }
 
         private void DataEstatisticas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonRemove_Click(object sender, RoutedEventArgs e)
         {
 
         }

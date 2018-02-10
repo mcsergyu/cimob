@@ -17,8 +17,55 @@
             <TabItem Header="Programas">
                 <Grid Background="#FFE5E5E5">
                     <ListBox Name="ListBoxProgramas" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                         FontFamily="Courier New" FontWeight="Black" Margin="190,0,0,540" SelectionChanged="ListBoxProgramas_SelectionChanged" />
+                         FontWeight="Black" Margin="508,0,0,382" SelectionChanged="ListBoxProgramas_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Margin="5" BorderThickness="1" BorderBrush="SteelBlue" CornerRadius="4" Background="SeaShell">
+                                    <StackPanel Margin="3" HorizontalAlignment="Stretch" >
+                                        <StackPanel Margin="3" Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Path=ProgramId}"></TextBlock>
+                                            <TextBlock Text="{Binding Path=Nome}"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel Margin="3" Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Path=Description}"></TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                     <DataGrid Name="DataGridProgramas" HorizontalAlignment="Left" Height="367" Margin="10,398,0,0" VerticalAlignment="Top" Width="974"/>
+                    <TextBox Text="{Binding Path=ProgramId}" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="99,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="99,63,0,0" TextWrapping="Wrap" Text="{Binding Path=Description}" VerticalAlignment="Top" Width="120"/>
+                    <TextBox IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="99,91,0,0" TextWrapping="Wrap" Text="{Binding Path=~StartDate}" VerticalAlignment="Top" Width="120"/>
+                    <TextBox IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="364,35,0,0" TextWrapping="Wrap" Text="{Binding Path=Nome}" VerticalAlignment="Top" Width="141"/>
+                    <TextBox IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="364,63,0,0" TextWrapping="Wrap" Text="{Binding Path=Vacancies}" VerticalAlignment="Top" Width="141"/>
+                    <TextBox IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="364,91,0,0" TextWrapping="Wrap" Text="{Binding Path=EndDate}" VerticalAlignment="Top" Width="141"/>
+                    <Label Content="ID" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.5" Width="56"/>
+                    <Label Content="Descrição" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.5" Width="56"/>
+                    <Label Content="Nome" HorizontalAlignment="Left" Margin="292,35,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.5" Width="66"/>
+                    <Label Content="Data de início" HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.5" Width="84"/>
+                    <Label Content="Vacancies" HorizontalAlignment="Left" Margin="292,63,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.5" Width="66"/>
+                    <Label Content="Data de fim" HorizontalAlignment="Left" Margin="292,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.5" Width="72"/>
+                    <TextBox IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="191,163,0,0" TextWrapping="Wrap" Text="{Binding Path=Bolsa}" VerticalAlignment="Top" Width="120"/>
+                    <TextBox IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="191,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="191,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Bolsa&#xD;&#xA;" HorizontalAlignment="Left" Margin="130,163,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.5" Width="56"/>
+                    <Label Content="Destino" HorizontalAlignment="Left" Margin="130,191,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.5" Width="56"/>
+                    <Label Content="Entidade" HorizontalAlignment="Left" Margin="130,219,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.5" Width="56"/>
+                    <ToolBarTray HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="503">
+                        <ToolBar>
+                            <Button Name="ButtonAdd" Click="ButtonAdd_Click">
+                                <TextBlock Height="20" Text="Adicionar" Margin="5,0"/>
+                            </Button>
+                            <Button Name="ButtonEdit" Click="ButtonEdit_Click">
+                                <TextBlock Height="20" Text="Editar"  Margin="5,0"/>
+                            </Button>
+                            <Button Name="ButtonRemove" Click="ButtonRemove_Click">
+                                <TextBlock Height="20" Text="Remover"  Margin="5,0"/>
+                            </Button>
+                        </ToolBar>
+                    </ToolBarTray>
 
                 </Grid>
             </TabItem>
@@ -35,11 +82,29 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="17*"/>
                         <ColumnDefinition Width="12*"/>
-                        <ColumnDefinition Width="965*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="22*"/>
+                        <ColumnDefinition Width="923*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid Name="DataEstatisticas" ItemsSource="{Binding ElementName=ListBoxEstatisticasProg, Path=SelectedItem}" HorizontalAlignment="Left" Height="333" Margin="0,383,0,0" VerticalAlignment="Top" Width="994" Grid.ColumnSpan="3" SelectionChanged="DataEstatisticas_SelectionChanged"/>
-                    <Label Name="TotalCandidaturas" HorizontalAlignment="Left" Margin="10,721,0,0" VerticalAlignment="Top" Width="239" Grid.ColumnSpan="3" Height="39"/>
-                    <ListBox Name="ListBoxEstatisticasProg" HorizontalAlignment="Left" Height="355" Margin="485,10,0,0" VerticalAlignment="Top" Width="470" Grid.Column="2" SelectionChanged="ListBox_SelectionChanged"/>
+                    <DataGrid Name="DataEstatisticas" ItemsSource="{Binding ElementName=ListBoxEstatisticasProg, Path=SelectedItem}" HorizontalAlignment="Left" Height="333" Margin="0,383,0,0" VerticalAlignment="Top" Width="994" Grid.ColumnSpan="5" SelectionChanged="DataEstatisticas_SelectionChanged"/>
+                    <Label Name="TotalCandidaturas" HorizontalAlignment="Left" Margin="10,721,0,0" VerticalAlignment="Top" Width="239" Grid.ColumnSpan="5" Height="39"/>
+                    <ListBox Name="ListBoxEstatisticasProg" HorizontalAlignment="Left" Height="355" Margin="443,10,0,0" VerticalAlignment="Top" Width="470" Grid.Column="4" SelectionChanged="ListBox_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Margin="5" BorderThickness="1" BorderBrush="SteelBlue" CornerRadius="4" Background="SeaShell">
+                                    <StackPanel Margin="3" HorizontalAlignment="Stretch" >
+                                        <StackPanel Margin="3" Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Path=ProgramId}"></TextBlock>
+                                            <TextBlock Text="{Binding Path=Nome}"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel Margin="3" Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Path=Description}"></TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </Grid>
             </TabItem>
         </TabControl>
