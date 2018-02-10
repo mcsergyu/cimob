@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cimob_BackOffice"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="852" Width="1008"
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
-        
+        <Menu HorizontalAlignment="Left" Height="18" VerticalAlignment="Top" Width="717">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Sair" Click="MenuItem_ClickSair"/>
+            </MenuItem>
+        </Menu>
+        <TabControl HorizontalAlignment="Left" Height="803" Margin="0,18,0,0" VerticalAlignment="Top" Width="1000">
+            <TabItem Header="Programas">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox Name="ListBoxProgramas" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                         FontFamily="Courier New" FontWeight="Black" Margin="190,0,0,540" SelectionChanged="ListBoxProgramas_SelectionChanged" />
+                    <DataGrid Name="DataGridProgramas" HorizontalAlignment="Left" Height="367" Margin="10,398,0,0" VerticalAlignment="Top" Width="974"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Candidaturas">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="226*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Estatísticas">
+                <Grid Background="#ffe5e5e5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="17*"/>
+                        <ColumnDefinition Width="12*"/>
+                        <ColumnDefinition Width="965*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Name="DataEstatisticas" ItemsSource="{Binding ElementName=ListBoxEstatisticasProg, Path=SelectedItem}" HorizontalAlignment="Left" Height="333" Margin="0,383,0,0" VerticalAlignment="Top" Width="994" Grid.ColumnSpan="3" SelectionChanged="DataEstatisticas_SelectionChanged"/>
+                    <Label Name="TotalCandidaturas" HorizontalAlignment="Left" Margin="10,721,0,0" VerticalAlignment="Top" Width="239" Grid.ColumnSpan="3" Height="39"/>
+                    <ListBox Name="ListBoxEstatisticasProg" HorizontalAlignment="Left" Height="355" Margin="485,10,0,0" VerticalAlignment="Top" Width="470" Grid.Column="2" SelectionChanged="ListBox_SelectionChanged"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
     </Grid>
 </Window>

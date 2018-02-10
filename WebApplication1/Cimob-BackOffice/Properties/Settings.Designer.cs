@@ -26,5 +26,17 @@ namespace Cimob_BackOffice.Properties
                 return defaultInstance;
             }
         }
+
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]//Server=tcp:cimobdb.database.windows.net,1433;Initial Catalog=CimobDb;Persist Security Info=False;User ID=admincimob;Password=@dmincimob1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;     
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=tcp:cimobdb.database.windows.net,1433;Initial Catalog=CimobY;Persist Security Info=False;User ID=admincimob;Password=@dmincimob1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;")]
+        public string DefaultConnection
+        {
+            get
+            {
+                return ((string)(this["DefaultConnection"]));
+            }
+        }
     }
 }

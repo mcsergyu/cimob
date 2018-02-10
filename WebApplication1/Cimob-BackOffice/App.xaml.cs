@@ -13,5 +13,14 @@ namespace Cimob_BackOffice
     /// </summary>
     public partial class App : Application
     {
+        private static BdApplication bdApplication = new BdApplication();
+
+        public static BdApplication BdApplication
+        {
+            get
+            {
+                return bdApplication;
+            }
+        }
     }
 }
