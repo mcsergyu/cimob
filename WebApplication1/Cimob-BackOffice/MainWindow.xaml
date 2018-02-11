@@ -24,7 +24,7 @@
                                     <StackPanel Margin="3" HorizontalAlignment="Stretch" >
                                         <StackPanel Margin="3" Orientation="Horizontal">
                                             <TextBlock Text="{Binding Path=ProgramId}"></TextBlock>
-                                            <TextBlock Text="{Binding Path=Nome}"></TextBlock>
+                                            <TextBlock Text="{Binding Path=Name}"></TextBlock>
                                         </StackPanel>
                                         <StackPanel Margin="3" Orientation="Horizontal">
                                             <TextBlock Text="{Binding Path=Description}"></TextBlock>
@@ -38,7 +38,7 @@
                     <TextBox Text="{Binding Path=ProgramId}" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="99,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                     <TextBox IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="99,63,0,0" TextWrapping="Wrap" Text="{Binding Path=Description}" VerticalAlignment="Top" Width="120"/>
                     <TextBox IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="99,91,0,0" TextWrapping="Wrap" Text="{Binding Path=~StartDate}" VerticalAlignment="Top" Width="120"/>
-                    <TextBox IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="364,35,0,0" TextWrapping="Wrap" Text="{Binding Path=Nome}" VerticalAlignment="Top" Width="141"/>
+                    <TextBox IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="364,35,0,0" TextWrapping="Wrap" Text="{Binding Path=Name}" VerticalAlignment="Top" Width="141"/>
                     <TextBox IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="364,63,0,0" TextWrapping="Wrap" Text="{Binding Path=Vacancies}" VerticalAlignment="Top" Width="141"/>
                     <TextBox IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="364,91,0,0" TextWrapping="Wrap" Text="{Binding Path=EndDate}" VerticalAlignment="Top" Width="141"/>
                     <Label Content="ID" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.5" Width="56"/>
@@ -69,26 +69,11 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Candidaturas">
-                <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="11*"/>
-                        <ColumnDefinition Width="226*"/>
-                    </Grid.ColumnDefinitions>
-                </Grid>
-            </TabItem>
             <TabItem Header="Estatísticas">
                 <Grid Background="#ffe5e5e5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="17*"/>
-                        <ColumnDefinition Width="12*"/>
-                        <ColumnDefinition Width="20*"/>
-                        <ColumnDefinition Width="22*"/>
-                        <ColumnDefinition Width="923*"/>
-                    </Grid.ColumnDefinitions>
-                    <DataGrid Name="DataEstatisticas" ItemsSource="{Binding ElementName=ListBoxEstatisticasProg, Path=SelectedItem}" HorizontalAlignment="Left" Height="333" Margin="0,383,0,0" VerticalAlignment="Top" Width="994" Grid.ColumnSpan="5" SelectionChanged="DataEstatisticas_SelectionChanged"/>
-                    <Label Name="TotalCandidaturas" HorizontalAlignment="Left" Margin="10,721,0,0" VerticalAlignment="Top" Width="239" Grid.ColumnSpan="5" Height="39"/>
-                    <ListBox Name="ListBoxEstatisticasProg" HorizontalAlignment="Left" Height="355" Margin="443,10,0,0" VerticalAlignment="Top" Width="470" Grid.Column="4" SelectionChanged="ListBox_SelectionChanged">
+                    <DataGrid Name="DataEstatisticas" ItemsSource="{Binding ElementName=ListBoxEstatisticasProg, Path=SelectedItem}" HorizontalAlignment="Left" Height="333" Margin="0,383,0,0" VerticalAlignment="Top" Width="994" Grid.ColumnSpan="6" SelectionChanged="DataEstatisticas_SelectionChanged"/>
+                    <Label Name="TotalCandidaturas" HorizontalAlignment="Left" Margin="10,721,0,0" VerticalAlignment="Top" Width="366" Grid.ColumnSpan="6" Height="39"/>
+                    <ListBox Name="ListBoxEstatisticasProg" HorizontalAlignment="Left" Height="355" Margin="443,10,0,0" VerticalAlignment="Top" Width="470" Grid.Column="4" SelectionChanged="ListBox_SelectionChanged" Grid.ColumnSpan="2">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border Margin="5" BorderThickness="1" BorderBrush="SteelBlue" CornerRadius="4" Background="SeaShell">

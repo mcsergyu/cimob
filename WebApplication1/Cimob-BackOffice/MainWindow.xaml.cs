@@ -72,17 +72,64 @@ namespace Cimob_BackOffice
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
+            if (ListBoxProgramas.SelectedItem == null)
+                return;
 
+            Program program = ListBoxProgramas.SelectedItem as Program;
+            EditarPrograma edicaoPrograma = new EditarPrograma(App.BdApplication.GetPrograms(), new Program(program)) { Title = "Editar um programa de mobilidade" };
+
+            if(edicaoPrograma.ShowDialog()==true && edicaoPrograma.Program != program)
+            {
+                program.DestinationId = edicaoPrograma.Program.DestinationId;
+                program.EntityId = edicaoPrograma.Program.EntityId;
+                program.Name = edicaoPrograma.Program.Name;
+                program.Description = edicaoPrograma.Program.Description;
+                program.Vacancies = edicaoPrograma.Program.Vacancies;
+                program.StartDate = edicaoPrograma.Program.StartDate;
+                program.EndDate = edicaoPrograma.Program.EndDate;
+                program.Bolsa = edicaoPrograma.Program.Bolsa;
+
+                App.BdApplication.UpdateProgram(program);
+
+                ListBoxProgramas.Items.Refresh();
+                DataGridProgramas.Items.Refresh();
+            }
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
+            EditarPrograma addPrograma = new EditarPrograma(App.BdApplication.GetPrograms()) { Title = "Adicionar Programa de mobilidade" };
 
+            if (addPrograma.ShowDialog() == true)
+            {
+                int id = App.BdApplication.InsertPrograms(addPrograma.Program);
+                if(id > 0)
+                {
+                    addPrograma.Program.ProgramId = id;
+                    programas.Add(addPrograma.Program);
+                }
+
+                ListBoxProgramas.Items.MoveCurrentToLast();
+                //DataGridProgramas.Items.MoveCurrentToLast();
+            }
         }
 
         private void ButtonRemove_Click(object sender, RoutedEventArgs e)
         {
+            if (ListBoxProgramas.SelectedItem == null)
+                return;
 
+            Program programa = ListBoxProgramas.SelectedItem as Program;
+
+            if (MessageBox.Show("Deseseja mesmo apagar o programa (Y/N)?", "Apagar Programa?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+
+                App.BdApplication.RemoverPrograma(programa.ProgramId);
+                programas.Remove(programa);
+
+                ListBoxProgramas.Items.MoveCurrentToFirst();
+                
+            }
         }
     }
 }

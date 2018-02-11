@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cimob_BackOffice"
         mc:Ignorable="d"
-        Title="EditarPrograma" Height="300" Width="300">
-    <Grid>
-        
+        WindowStartupLocation="CenterOwner"
+        Title="Dados do Programa" Height="366.685" Width="719.825" Closing="Window_Closing">
+    <Grid Name="GridFormPrograma" DockPanel.Dock="Left" Margin="10,10,10,5">
+        <Label Content="Destino" HorizontalAlignment="Left" Margin="405,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Entidade" HorizontalAlignment="Left" Margin="405,178,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nome" HorizontalAlignment="Left" Margin="-1,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Descrição" HorizontalAlignment="Left" Margin="-1,41,0,0" VerticalAlignment="Top"/>
+        <Label Content="Vagas" HorizontalAlignment="Left" Margin="-1,72,0,0" VerticalAlignment="Top"/>
+        <Label Content="Data de início" HorizontalAlignment="Left" Margin="-1,103,0,0" VerticalAlignment="Top"/>
+        <Label Content="Data de fim" HorizontalAlignment="Left" Margin="-1,134,0,0" VerticalAlignment="Top"/>
+        <Label Content="Bolsa" HorizontalAlignment="Left" Margin="-1,165,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="OkButton" Click="OkButton_Click" Content="OK" HorizontalAlignment="Left" Margin="97,247,0,0" VerticalAlignment="Top" Width="118" Height="42"/>
+        <Button x:Name="CancelButton" IsCancel="True" Click="CancelButton_Click" Content="Cancel" HorizontalAlignment="Left" Margin="250,247,0,0" VerticalAlignment="Top" Width="121" Height="42"/>
+        <TextBox Name="TextName" HorizontalAlignment="Left" Height="23" Margin="97,13,0,0" TextWrapping="Wrap" Text="{Binding Path=Name}" VerticalAlignment="Top" Width="293"/>
+        <TextBox Name="TextDescricao" HorizontalAlignment="Left" Height="23" Margin="97,44,0,0" TextWrapping="Wrap" Text="{Binding Path=Description}" VerticalAlignment="Top" Width="293"/>
+        <DatePicker SelectedDate="{Binding Path=StartDate}" Name="StartDate" HorizontalAlignment="Left" Margin="97,105,0,0" VerticalAlignment="Top" Width="134"/>
+        <DatePicker SelectedDate="{Binding Path=EndDate}" Name="EndDate" HorizontalAlignment="Left" Margin="99,136,0,0" VerticalAlignment="Top" Width="134"/>
+        <TextBox Name="TextVagas" HorizontalAlignment="Left" Height="23" Margin="97,75,0,0" TextWrapping="Wrap" Text="{Binding Path=Vacancies}" VerticalAlignment="Top" Width="66"/>
+        <TextBox Name="TextBolsa" HorizontalAlignment="Left" Height="23" Margin="97,169,0,0" TextWrapping="Wrap" Text="{Binding Path=Bolsa}" VerticalAlignment="Top" Width="66"/>
+        <Label Content="€" HorizontalAlignment="Left" Margin="163,165,0,0" VerticalAlignment="Top" Height="23"/>
+        <ListBox Name="ListBoxDestino" HorizontalAlignment="Left" Height="146" Margin="462,10,0,0" VerticalAlignment="Top" Width="221"/>
+        <ListBox Name="ListBoxEntidade" HorizontalAlignment="Left" Height="146" Margin="461,165,0,0" VerticalAlignment="Top" Width="221"/>
+        <TextBox x:Name="TextDestino" HorizontalAlignment="Left" Height="23" Margin="390,91,0,0" TextWrapping="Wrap" Text="{Binding Path=DestinationId}" VerticalAlignment="Top" Width="66"/>
+        <TextBox x:Name="TextEntity" HorizontalAlignment="Left" Height="23" Margin="390,209,0,0" TextWrapping="Wrap" Text="{Binding Path=EntityId}" VerticalAlignment="Top" Width="66"/>
+
     </Grid>
 </Window>

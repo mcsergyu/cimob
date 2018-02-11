@@ -72,9 +72,11 @@
     </Compile>
     <Compile Include="BdApplication.cs" />
     <Compile Include="Candidatura.cs" />
+    <Compile Include="Destination.cs" />
     <Compile Include="EditarPrograma.xaml.cs">
       <DependentUpon>EditarPrograma.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Entity.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
