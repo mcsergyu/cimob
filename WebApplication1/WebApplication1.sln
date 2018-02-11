@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cimob", "WebApplication1\Cimob.csproj", "{9A64112F-96CD-41B1-8D71-B7F6719F06C1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cimob.Test", "XUnitTestProject2\Cimob.Test.csproj", "{3EB5BD29-9DBB-4486-9190-4A837968BA2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cimob-BackOffice", "Cimob-BackOffice\Cimob-BackOffice.csproj", "{03F86C9A-5577-4C6F-B61E-709D9E747741}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3EB5BD29-9DBB-4486-9190-4A837968BA2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EB5BD29-9DBB-4486-9190-4A837968BA2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EB5BD29-9DBB-4486-9190-4A837968BA2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03F86C9A-5577-4C6F-B61E-709D9E747741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03F86C9A-5577-4C6F-B61E-709D9E747741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03F86C9A-5577-4C6F-B61E-709D9E747741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03F86C9A-5577-4C6F-B61E-709D9E747741}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

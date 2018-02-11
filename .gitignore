@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 WebApplication1/WebApplication1/Views/Program/Index.cshtml
+/WebApplication1/Cimo-BackOffice
