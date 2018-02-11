@@ -5,6 +5,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using System.Windows.Controls;
 
 namespace Cimob_BackOffice
 {
@@ -115,11 +117,7 @@ namespace Cimob_BackOffice
             return (candidaturaId + " - "
                 + startDate + " - "
                 + lastDate + " - "
-                + candidaturaState// + " - "
-                                  //+ EndDate + " - "
-                                  //+ Bolsa + " - "
-                                  //+ EntityId + " - "
-                                  //+ DestinationId
+                + candidaturaState
                 );
         }
 
@@ -159,17 +157,5 @@ namespace Cimob_BackOffice
 
     }
 
-    public enum CandidaturaState
-    {
-        [Display(Name = "Aguarda agendamento")]
-        scheduling,
-        [Display(Name = "Aguarda entrevista")]
-        interview,
-        [Display(Name = "Cancelada")]
-        canceled,
-        [Display(Name = "Rejeitada")]
-        rejected,
-        [Display(Name = "Aprovada")]
-        approved
-    }
+    
 }
