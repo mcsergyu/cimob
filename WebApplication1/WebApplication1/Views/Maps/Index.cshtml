@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+</style>
+    <h3>Mapa de Destinos</h3>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                center: { lat: -34.397, lng: 150.644 }
+            });
+            var geocoder = new google.maps.Geocoder();
+            const destinos = @Html.Raw(Json.Serialize(ViewBag.programs));
+            const toShow = {};
+            let startDate, endDate;
+            destinos.forEach((destiny) => {
+                startDate = new Date(destiny.startDate);
+                endDate = new Date(destiny.endDate);
+
+                if (toShow.hasOwnProperty(destiny.cidade) ) {
+                    toShow[destiny.cidade].info +=
+                        '<div style="background-color: black;height: 1px;"></div><p style="font-weight: bold;">Nome: ' + destiny.name + '</p>' +
+                        '<p>Bolsa: ' + destiny.bolsa + '</p>' +
+                        '<p>Descrição: ' + destiny.description + '</p>' +
+                        '<p>Vagas: ' + destiny.vacancies + '</p>' +
+                    '<p>Inicio: ' + startDate.toLocaleDateString()+ '</p>' +
+                        '<p>Fim: ' + endDate.toLocaleDateString() + '</p>';
+                } else {
+                    toShow[destiny.cidade] = {}
+                    toShow[destiny.cidade].cidade = destiny.cidade;
+                    toShow[destiny.cidade].info = 
+                        '<h1>' + destiny.cidade + '</h1>' +
+                        '<h1 id="firstHeading" class="firstHeading">Programas:</h1><br/>' +
+                        '<div style="background-color: black;height: 1px;"></div><p style="font-weight: bold;">Nome: ' + destiny.name + '</p>' +
+                        '<p>Bolsa: ' + destiny.bolsa + '</p>' +
+                        '<p>Descrição: ' + destiny.description + '</p>' +
+                        '<p>Vagas: ' + destiny.vacancies + '</p>' +
+                        '<p>Inicio: ' + startDate.toLocaleDateString() + '</p>' +
+                        '<p>Fim: ' + endDate.toLocaleDateString() + '</p>';
+                }
+            });
+
+            for (marker in toShow) {
+                geocodeAddress(geocoder, map, toShow[marker].cidade, toShow[marker].info);
+            }
+    }
+
+        function geocodeAddress(geocoder, resultsMap, value, info) {
+            console.log(value)
+        var address = value;
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status === 'OK') {
+                resultsMap.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: resultsMap,
+                    position: results[0].geometry.location
+                });
+                var infowindow = new google.maps.InfoWindow({
+                    content: info
+                });
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
+
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt8qHYnNm5a3ci05cgBNHzHmTNLa1yTLw&callback=initMap">
+    </script>

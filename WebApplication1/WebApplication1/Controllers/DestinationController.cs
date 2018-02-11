@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Cimob.Data;
 using Cimob.Models;
+using Newtonsoft.Json;
 
 namespace Cimob.Controllers
 {
+    [JsonObject(IsReference = true)]
     public class DestinationController : Controller
     {
         private readonly ApplicationDbContext _context;
