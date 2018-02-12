@@ -25,10 +25,10 @@
         <TextBox Name="TextVagas" HorizontalAlignment="Left" Height="23" Margin="97,75,0,0" TextWrapping="Wrap" Text="{Binding Path=Vacancies}" VerticalAlignment="Top" Width="66"/>
         <TextBox Name="TextBolsa" HorizontalAlignment="Left" Height="23" Margin="97,169,0,0" TextWrapping="Wrap" Text="{Binding Path=Bolsa}" VerticalAlignment="Top" Width="66"/>
         <Label Content="€" HorizontalAlignment="Left" Margin="163,165,0,0" VerticalAlignment="Top" Height="23"/>
-        <ListBox Name="ListBoxDestino" HorizontalAlignment="Left" Height="146" Margin="462,10,0,0" VerticalAlignment="Top" Width="221"/>
-        <ListBox Name="ListBoxEntidade" HorizontalAlignment="Left" Height="146" Margin="461,165,0,0" VerticalAlignment="Top" Width="221"/>
-        <TextBox x:Name="TextDestino" HorizontalAlignment="Left" Height="23" Margin="390,91,0,0" TextWrapping="Wrap" Text="{Binding Path=DestinationId}" VerticalAlignment="Top" Width="66"/>
-        <TextBox x:Name="TextEntity" HorizontalAlignment="Left" Height="23" Margin="390,209,0,0" TextWrapping="Wrap" Text="{Binding Path=EntityId}" VerticalAlignment="Top" Width="66"/>
+        <ListBox Name="ListBoxDestino" SelectionChanged="ListBoxDestino_SelectionChanged" HorizontalAlignment="Left" Height="146" Margin="462,10,0,0" VerticalAlignment="Top" Width="221"/>
+        <ListBox Name="ListBoxEntidade" SelectionChanged="ListBoxEntidade_SelectionChanged" HorizontalAlignment="Left" Height="146" Margin="461,165,0,0" VerticalAlignment="Top" Width="221"/>
+        <TextBox x:Name="TextDestino" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="407,36,0,0" TextWrapping="Wrap" Text="{Binding Path=DestinationId}" VerticalAlignment="Top" Width="51"/>
+        <TextBox x:Name="TextEntity" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="405,204,0,0" TextWrapping="Wrap" Text="{Binding Path=EntityId}" VerticalAlignment="Top" Width="51"/>
 
     </Grid>
 </Window>

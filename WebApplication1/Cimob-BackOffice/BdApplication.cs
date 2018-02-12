@@ -232,7 +232,7 @@ namespace Cimob_BackOffice
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 
-            string sql = "select * from Destination";
+            string sql = "select * from DestinationS";
 
             cmd.CommandText = sql;
 
@@ -275,7 +275,7 @@ namespace Cimob_BackOffice
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 
-            string sql = "select * from Entity";
+            string sql = "select * from Entities";
 
             cmd.CommandText = sql;
 

@@ -17,13 +17,14 @@
             <TabItem Header="Programas">
                 <Grid Background="#FFE5E5E5">
                     <ListBox Name="ListBoxProgramas" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                         FontWeight="Black" Margin="10,34,0,382" SelectionChanged="ListBoxProgramas_SelectionChanged">
+                         FontWeight="Black" Margin="10,34,0,382" MouseDoubleClick="ListBoxProgramas_MouseDoubleClick" SelectionChanged="ListBoxProgramas_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border Margin="5" BorderThickness="1" BorderBrush="SteelBlue" CornerRadius="4" Background="SeaShell">
                                     <StackPanel Margin="3" HorizontalAlignment="Stretch" >
                                         <StackPanel Margin="3" Orientation="Horizontal">
                                             <TextBlock Text="{Binding Path=ProgramId}"></TextBlock>
+                                            <TextBlock Text=" - "></TextBlock>
                                             <TextBlock Text="{Binding Path=Name}"></TextBlock>
                                         </StackPanel>
                                         <StackPanel Margin="3" Orientation="Horizontal">

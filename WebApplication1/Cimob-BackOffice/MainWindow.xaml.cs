@@ -131,6 +131,11 @@ namespace Cimob_BackOffice
                 
             }
         }
+
+        private void ListBoxProgramas_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ButtonEdit_Click(sender, e);
+        }
     }
 }
 

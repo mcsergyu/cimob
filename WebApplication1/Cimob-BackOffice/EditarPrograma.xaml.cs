@@ -36,20 +36,20 @@ namespace Cimob_BackOffice
 
             this.DataContext = Program;
 
-            //destinos = App.BdApplication.GetDestinos();
-            //entidades = App.BdApplication.GetEntidades();
+            destinos = App.BdApplication.GetDestinos();
+            entidades = App.BdApplication.GetEntidades();
 
-            //ListBoxDestino.ItemsSource = destinos;
-            //ListBoxDestino.SelectedValuePath = "DestinationId";
-            ////ListBoxProgramas.DisplayMemberPath = "Name" + "Description";
-            //ListBoxDestino.SelectedIndex = Program.DestinationId;
-            //ListBoxDestino.IsSynchronizedWithCurrentItem = true;
+            ListBoxDestino.ItemsSource = destinos;
+            ListBoxDestino.SelectedValuePath = "DestinationId";
+            //ListBoxProgramas.DisplayMemberPath = "Name" + "Description";
+            ListBoxDestino.SelectedIndex = program.DestinationId-1;
+            ListBoxDestino.IsSynchronizedWithCurrentItem = true;
 
 
-            //ListBoxEntidade.ItemsSource = entidades;
-            //ListBoxEntidade.SelectedValuePath = "EntityId";
-            //ListBoxEntidade.SelectedIndex = Program.EntityId;
-            //ListBoxEntidade.IsSynchronizedWithCurrentItem = true;
+            ListBoxEntidade.ItemsSource = entidades;
+            ListBoxEntidade.SelectedValuePath = "EntityId";
+            ListBoxEntidade.SelectedIndex = program.EntityId-1;
+            ListBoxEntidade.IsSynchronizedWithCurrentItem = true;
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
@@ -59,14 +59,14 @@ namespace Cimob_BackOffice
             TextVagas.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             TextBolsa.GetBindingExpression(TextBox.TextProperty).UpdateSource();
 
-            //ListBoxDestino.GetBindingExpression(ListBox.SelectedItemProperty).UpdateSource();
+            //ListBoxDestino.GetBindingExpression(ListBox.SelectedValuePathProperty).UpdateSource();
             //ListBoxEntidade.GetBindingExpression(ListBox.SelectedItemProperty).UpdateSource();
 
             StartDate.GetBindingExpression(DatePicker.SelectedDateProperty).UpdateSource();
             EndDate.GetBindingExpression(DatePicker.SelectedDateProperty).UpdateSource();
 
-            TextVagas.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            TextBolsa.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            TextDestino.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            TextEntity.GetBindingExpression(TextBox.TextProperty).UpdateSource();
 
             string message;
             if(this.DialogResult == true && FormHasErrors(out message))
@@ -80,11 +80,11 @@ namespace Cimob_BackOffice
 
         private bool AtualizarPrograma()
         {
-            if (listaProgram.Any(p => p.ProgramId == Program.ProgramId && p.EntityId == Program.EntityId 
-            && p.DestinationId == Program.DestinationId && p.Name == Program.Name 
+            if (listaProgram.Any(p => p.ProgramId == Program.ProgramId /*&& p.EntityId.ToString() == Program.EntityId.ToString() 
+            && p.DestinationId.ToString() == Program.DestinationId.ToString()*/ && p.Name == Program.Name /*
             && p.Description == Program.Description && p.StartDate == Program.StartDate
             && p.EndDate == Program.EndDate && p.Vacancies == Program.Vacancies
-            && p.Bolsa == Program.Bolsa))
+            && p.Bolsa == Program.Bolsa*/))
             {
                 MessageBox.Show("Esse Programa já existe!");
                 return false;
@@ -159,5 +159,16 @@ namespace Cimob_BackOffice
             }
         }
 
+        private void ListBoxDestino_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Destination program = ListBoxDestino.SelectedItem as Destination;
+            TextDestino.Text =  program.DestinationId.ToString();
+        }
+
+        private void ListBoxEntidade_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Entity entity = ListBoxEntidade.SelectedItem as Entity;
+            TextEntity.Text=entity.EntityId.ToString();
+        }
     }
 }
