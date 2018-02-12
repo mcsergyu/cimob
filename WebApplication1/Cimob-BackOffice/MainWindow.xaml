@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cimob_BackOffice"
         mc:Ignorable="d"
-        Title="MainWindow" Height="852" Width="1008"
+        Title="Cimob - Backoffice" Height="852" Width="1008"
         WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         <Menu HorizontalAlignment="Left" Height="18" VerticalAlignment="Top" Width="717">

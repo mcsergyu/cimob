@@ -42,13 +42,13 @@ namespace Cimob_BackOffice
             ListBoxDestino.ItemsSource = destinos;
             ListBoxDestino.SelectedValuePath = "DestinationId";
             //ListBoxProgramas.DisplayMemberPath = "Name" + "Description";
-            ListBoxDestino.SelectedIndex = program.DestinationId-1;
+            //ListBoxDestino.SelectedIndex = program.DestinationId-1;
             ListBoxDestino.IsSynchronizedWithCurrentItem = true;
 
 
             ListBoxEntidade.ItemsSource = entidades;
             ListBoxEntidade.SelectedValuePath = "EntityId";
-            ListBoxEntidade.SelectedIndex = program.EntityId-1;
+            //ListBoxEntidade.SelectedIndex = program.EntityId-1;
             ListBoxEntidade.IsSynchronizedWithCurrentItem = true;
         }
 
