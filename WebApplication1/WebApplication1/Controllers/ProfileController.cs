@@ -41,23 +41,17 @@ namespace Cimob.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(ProfileViewModel model)
         {
+            ViewBag.ProfileType = _context.ProfileTypes.ToList<ProfileType>();
             if (ModelState.IsValid)
             {
                 //need to update 
                 var userToUpdate = _context.Users.Where(u => u.Email == model.Email).Single();
-
-
                 userToUpdate.Name = model.Name;
                 userToUpdate.Email = model.Email;
                 userToUpdate.PhoneNumber = model.PhoneNumber;
                 userToUpdate.ProfileTypeID = model.ProfileTypeID;
-
-
                 _context.SaveChanges();
                 ViewBag.user = userToUpdate;
-
-
-
             }
             else
             {
