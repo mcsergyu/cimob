@@ -9,8 +9,17 @@ namespace Cimob.Data
 
 
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks></remarks>
     public class DbInitializer
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <remarks></remarks>
         public static void Initialize(ApplicationDbContext context)
         {
             context.Database.EnsureCreated();
@@ -25,7 +34,7 @@ namespace Cimob.Data
             if (!context.ProfileTypes.Any())
             {
                 context.ProfileTypes.Add(new ProfileType { Description = "Estudante" });
-                 context.ProfileTypes.Add(new ProfileType { Description = "Trabalhador" });
+                context.ProfileTypes.Add(new ProfileType { Description = "Trabalhador" });
                 context.SaveChanges();
             }
             if (!context.Destinations.Any())
@@ -52,13 +61,13 @@ namespace Cimob.Data
                 context.Programs.Add(new Models.Program
                 {
                     Name = "ProgramaXPTO 18-19",
-                    DestinationId=2,
+                    DestinationId = 2,
                     Description = "Programa XPTO para xpto 2018-2019",
                     Vacancies = 12,
                     StartDate = DateTime.Parse("2018-3-1"),
                     EndDate = DateTime.Parse("2019-3-31"),
-                    EntityId =1,
-                    Bolsa=2200
+                    EntityId = 1,
+                    Bolsa = 2200
                 });
 
 
@@ -66,12 +75,12 @@ namespace Cimob.Data
                 {
                     Name = "ProgramaADVANCED 2018",
                     Description = "Programa Avançado 2018",
-                    DestinationId=1,
+                    DestinationId = 1,
                     Vacancies = 8,
                     StartDate = DateTime.Parse("2018-4-1"),
                     EndDate = DateTime.Parse("2018-7-31"),
-                    EntityId =2,
-                    Bolsa=800
+                    EntityId = 2,
+                    Bolsa = 800
                 });
 
                 context.Programs.Add(new Models.Program
