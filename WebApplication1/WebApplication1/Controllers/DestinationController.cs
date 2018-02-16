@@ -28,7 +28,7 @@ namespace Cimob.Controllers
 
         // GET: Destination
         /// <summary>
-        /// 
+        /// Return destinations page
         /// </summary>
         /// <returns></returns>
         /// <remarks></remarks>

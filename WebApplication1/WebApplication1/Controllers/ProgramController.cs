@@ -10,6 +10,10 @@ using Cimob.Models;
 
 namespace Cimob.Controllers
 {
+    /// <summary>
+    /// Program Controller Class
+    /// </summary>
+    /// <remarks></remarks>
     public class ProgramController : Controller
     {
         private readonly ApplicationDbContext _context;

@@ -14,12 +14,22 @@ using Microsoft.AspNetCore.Identity;
 namespace Cimob.Controllers
 {
 
+    /// <summary>
+    /// Profile Controller Class
+    /// </summary>
+    /// <remarks></remarks>
     [Authorize]
     public class ProfileController : Controller
     {
         private ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Cimob.Controllers.ProfileController" /> class. 
+        /// </summary>
+        /// <param name="_context"></param>
+        /// <param name="_userManager"></param>
+        /// <remarks></remarks>
         public ProfileController(ApplicationDbContext _context, UserManager<ApplicationUser> _userManager)
         {
             this._userManager = _userManager;
@@ -58,7 +68,7 @@ namespace Cimob.Controllers
                 var user = await _userManager.FindByNameAsync(HttpContext.User.Identity.Name);
                 ViewBag.user = user;
             }
-            
+
             // If we got this far, something failed, redisplay form
             return View(model);
         }
@@ -96,7 +106,7 @@ namespace Cimob.Controllers
             {
                 return View(model);
             }
-            
+
             return RedirectToAction(nameof(ChangePassword));
         }
 

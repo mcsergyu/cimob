@@ -114,5 +114,6 @@
     </SettingsGroup>
     <add key="VBdocman_Cimob"><![CDATA[default]]></add>
     <add key="VBdocman_Cimob.Test"><![CDATA[default]]></add>
+    <add key="VBdocman_Cimob-BackOffice"><![CDATA[default]]></add>
   </appSettings>
 </configuration>
