@@ -19,6 +19,10 @@ using Cimob.Data;
 
 namespace Cimob.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks></remarks>
     [Authorize]
     [Route("[controller]/[action]")]
     public class AccountController : Controller
@@ -29,11 +33,19 @@ namespace Cimob.Controllers
         private readonly ILogger _logger;
 
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Cimob.Controllers.AccountController" /> class. 
+        /// </summary>
+        /// <param name="userManager"></param>
+        /// <param name="signInManager"></param>
+        /// <param name="emailSender"></param>
+        /// <param name="logger"></param>
+        /// <remarks></remarks>
         public AccountController(
-            UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager,
-            IEmailSender emailSender,
-            ILogger<AccountController> logger)
+                    UserManager<ApplicationUser> userManager,
+                    SignInManager<ApplicationUser> signInManager,
+                    IEmailSender emailSender,
+                    ILogger<AccountController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -41,10 +53,21 @@ namespace Cimob.Controllers
             _logger = logger;
         }
 
-      
+
+        /// <summary>
+        /// Gets or sets .
+        /// </summary>
+        /// <value></value>
+        /// <remarks></remarks>
         [TempData]
         public string ErrorMessage { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="returnUrl">Optional. The default value is null.</param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Login(string returnUrl = null)
@@ -56,6 +79,13 @@ namespace Cimob.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model">Required. </param>
+        /// <param name="returnUrl">Optional. The default value is null.</param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -92,6 +122,13 @@ namespace Cimob.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rememberMe">Required. If set to <see langword="true" />, then ; otherwise, .</param>
+        /// <param name="returnUrl">Optional. The default value is null.</param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> LoginWith2fa(bool rememberMe, string returnUrl = null)
@@ -110,6 +147,14 @@ namespace Cimob.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model">Required. </param>
+        /// <param name="rememberMe">Required. If set to <see langword="true" />, then ; otherwise, .</param>
+        /// <param name="returnUrl">Optional. The default value is null.</param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -148,6 +193,12 @@ namespace Cimob.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="returnUrl">Optional. The default value is null.</param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> LoginWithRecoveryCode(string returnUrl = null)
@@ -164,6 +215,13 @@ namespace Cimob.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model">Required. </param>
+        /// <param name="returnUrl">Optional. The default value is null.</param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -202,6 +260,11 @@ namespace Cimob.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Lockout()
@@ -209,6 +272,12 @@ namespace Cimob.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="returnUrl">Optional. The default value is null.</param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
@@ -227,6 +296,13 @@ namespace Cimob.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model">Required. </param>
+        /// <param name="returnUrl">Optional. The default value is null.</param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -235,7 +311,7 @@ namespace Cimob.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,Answer= model.Anwser, ProfileTypeID = model.ProfilyTypeID, QuestionID = model.QuestionID };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Answer = model.Anwser, ProfileTypeID = model.ProfilyTypeID, QuestionID = model.QuestionID };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -256,6 +332,11 @@ namespace Cimob.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
@@ -265,6 +346,13 @@ namespace Cimob.Controllers
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="provider">Required. </param>
+        /// <param name="returnUrl">Optional. The default value is null.</param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -276,6 +364,13 @@ namespace Cimob.Controllers
             return Challenge(properties, provider);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="returnUrl">Optional. The default value is null.</param>
+        /// <param name="remoteError">Optional. The default value is null.</param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)
@@ -312,6 +407,13 @@ namespace Cimob.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model">Required. </param>
+        /// <param name="returnUrl">Optional. The default value is null.</param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -344,6 +446,13 @@ namespace Cimob.Controllers
             return View(nameof(ExternalLogin), model);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> ConfirmEmail(string userId, string code)
@@ -361,6 +470,11 @@ namespace Cimob.Controllers
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         [AllowAnonymous]
         public IActionResult ForgotPassword()
@@ -372,6 +486,12 @@ namespace Cimob.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -400,6 +520,11 @@ namespace Cimob.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         [AllowAnonymous]
         public IActionResult ForgotPasswordConfirmation()
@@ -407,6 +532,12 @@ namespace Cimob.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code">Optional. The default value is null.</param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         [AllowAnonymous]
         public IActionResult ResetPassword(string code = null)
@@ -419,6 +550,12 @@ namespace Cimob.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -443,6 +580,11 @@ namespace Cimob.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         [AllowAnonymous]
         public IActionResult ResetPasswordConfirmation()
@@ -451,6 +593,11 @@ namespace Cimob.Controllers
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         public IActionResult AccessDenied()
         {
