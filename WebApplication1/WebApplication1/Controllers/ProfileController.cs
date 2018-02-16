@@ -36,6 +36,11 @@ namespace Cimob.Controllers
             this._context = _context;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> Index()
@@ -46,6 +51,12 @@ namespace Cimob.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
@@ -74,6 +85,11 @@ namespace Cimob.Controllers
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         public async Task<IActionResult> ChangePassword()
         {
@@ -86,6 +102,12 @@ namespace Cimob.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)

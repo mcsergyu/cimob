@@ -8,6 +8,10 @@ using Cimob.Models;
 
 namespace Cimob.Data
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks></remarks>
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Cimob.Models.Question> Questions { get; set; }
@@ -17,11 +21,16 @@ namespace Cimob.Data
         public DbSet<Cimob.Models.Program> Programs { get; set; }
 
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Cimob.Data.ApplicationDbContext" /> class. 
+        /// </summary>
+        /// <param name="options"></param>
+        /// <remarks></remarks>
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+                    : base(options)
         {
         }
-       
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -29,9 +38,19 @@ namespace Cimob.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
-       
+
+        /// <summary>
+        /// Gets or sets .
+        /// </summary>
+        /// <value></value>
+        /// <remarks></remarks>
         public DbSet<Cimob.Models.Candidatura> Candidatura { get; set; }
-       
+
+        /// <summary>
+        /// Gets or sets .
+        /// </summary>
+        /// <value></value>
+        /// <remarks></remarks>
         public DbSet<Cimob.Models.Interview> Interview { get; set; }
     }
 }
