@@ -11,6 +11,10 @@ using Newtonsoft.Json;
 
 namespace Cimob.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks></remarks>
     [JsonObject(IsReference = true)]
     public class DestinationController : Controller
     {
@@ -44,9 +48,9 @@ namespace Cimob.Controllers
         //    {
         //        return NotFound();
         //    }
-  
+
         //    var destination = await _context.Destinations
-     
+
         //        .SingleOrDefaultAsync(m => m.DestinationId == id);
         //    if (destination == null)
         //    {

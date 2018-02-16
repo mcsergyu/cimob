@@ -16,6 +16,10 @@ using Cimob.Services;
 
 namespace Cimob.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks></remarks>
     [Authorize]
     [Route("[controller]/[action]")]
     public class ManageController : Controller
@@ -28,12 +32,21 @@ namespace Cimob.Controllers
 
         private const string AuthenicatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Cimob.Controllers.ManageController" /> class. 
+        /// </summary>
+        /// <param name="userManager"></param>
+        /// <param name="signInManager"></param>
+        /// <param name="emailSender"></param>
+        /// <param name="logger"></param>
+        /// <param name="urlEncoder"></param>
+        /// <remarks></remarks>
         public ManageController(
-          UserManager<ApplicationUser> userManager,
-          SignInManager<ApplicationUser> signInManager,
-          IEmailSender emailSender,
-          ILogger<ManageController> logger,
-          UrlEncoder urlEncoder)
+                  UserManager<ApplicationUser> userManager,
+                  SignInManager<ApplicationUser> signInManager,
+                  IEmailSender emailSender,
+                  ILogger<ManageController> logger,
+                  UrlEncoder urlEncoder)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -42,9 +55,19 @@ namespace Cimob.Controllers
             _urlEncoder = urlEncoder;
         }
 
+        /// <summary>
+        /// Gets or sets .
+        /// </summary>
+        /// <value></value>
+        /// <remarks></remarks>
         [TempData]
         public string StatusMessage { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -66,6 +89,12 @@ namespace Cimob.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(IndexViewModel model)
@@ -105,6 +134,12 @@ namespace Cimob.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SendVerificationEmail(IndexViewModel model)
@@ -129,6 +164,11 @@ namespace Cimob.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         public async Task<IActionResult> ChangePassword()
         {
@@ -148,6 +188,12 @@ namespace Cimob.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
@@ -177,6 +223,11 @@ namespace Cimob.Controllers
             return RedirectToAction(nameof(ChangePassword));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         public async Task<IActionResult> SetPassword()
         {
@@ -197,6 +248,12 @@ namespace Cimob.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SetPassword(SetPasswordViewModel model)
@@ -225,6 +282,11 @@ namespace Cimob.Controllers
             return RedirectToAction(nameof(SetPassword));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         public async Task<IActionResult> ExternalLogins()
         {
@@ -244,6 +306,12 @@ namespace Cimob.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> LinkLogin(string provider)
@@ -257,6 +325,11 @@ namespace Cimob.Controllers
             return new ChallengeResult(provider, properties);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         public async Task<IActionResult> LinkLoginCallback()
         {
@@ -285,6 +358,12 @@ namespace Cimob.Controllers
             return RedirectToAction(nameof(ExternalLogins));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemoveLogin(RemoveLoginViewModel model)
@@ -306,6 +385,11 @@ namespace Cimob.Controllers
             return RedirectToAction(nameof(ExternalLogins));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         public async Task<IActionResult> TwoFactorAuthentication()
         {
@@ -325,6 +409,11 @@ namespace Cimob.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         public async Task<IActionResult> Disable2faWarning()
         {
@@ -342,6 +431,11 @@ namespace Cimob.Controllers
             return View(nameof(Disable2fa));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Disable2fa()
@@ -362,6 +456,11 @@ namespace Cimob.Controllers
             return RedirectToAction(nameof(TwoFactorAuthentication));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         public async Task<IActionResult> EnableAuthenticator()
         {
@@ -387,6 +486,12 @@ namespace Cimob.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EnableAuthenticator(EnableAuthenticatorViewModel model)
@@ -419,12 +524,22 @@ namespace Cimob.Controllers
             return RedirectToAction(nameof(GenerateRecoveryCodes));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         public IActionResult ResetAuthenticatorWarning()
         {
             return View(nameof(ResetAuthenticator));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ResetAuthenticator()
@@ -442,6 +557,11 @@ namespace Cimob.Controllers
             return RedirectToAction(nameof(EnableAuthenticator));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         public async Task<IActionResult> GenerateRecoveryCodes()
         {

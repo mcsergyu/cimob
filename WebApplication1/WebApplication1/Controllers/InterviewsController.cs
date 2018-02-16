@@ -10,16 +10,30 @@ using Cimob.Models;
 
 namespace Cimob.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks></remarks>
     public class InterviewsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Cimob.Controllers.InterviewsController" /> class. 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <remarks></remarks>
         public InterviewsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
         // GET: Interviews
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Interview;
@@ -27,6 +41,12 @@ namespace Cimob.Controllers
         }
 
         // GET: Interviews/Details/5
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -71,6 +91,12 @@ namespace Cimob.Controllers
         */
 
         // GET: Interviews/Edit/5
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -83,13 +109,20 @@ namespace Cimob.Controllers
             {
                 return NotFound();
             }
-            
+
             return View(interview);
         }
 
         // POST: Interviews/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="interview"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("InterviewId,StartDate")] Interview interview)
@@ -135,6 +168,12 @@ namespace Cimob.Controllers
             return RedirectToAction(nameof(Index));
         }
         */
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         private bool InterviewExists(int id)
         {
             return _context.Interview.Any(e => e.InterviewId == id);

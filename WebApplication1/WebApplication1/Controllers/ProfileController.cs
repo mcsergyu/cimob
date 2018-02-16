@@ -14,18 +14,33 @@ using Microsoft.AspNetCore.Identity;
 namespace Cimob.Controllers
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks></remarks>
     [Authorize]
     public class ProfileController : Controller
     {
         private ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Cimob.Controllers.ProfileController" /> class. 
+        /// </summary>
+        /// <param name="_context"></param>
+        /// <param name="_userManager"></param>
+        /// <remarks></remarks>
         public ProfileController(ApplicationDbContext _context, UserManager<ApplicationUser> _userManager)
         {
             this._userManager = _userManager;
             this._context = _context;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> Index()
@@ -36,6 +51,12 @@ namespace Cimob.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
@@ -58,12 +79,17 @@ namespace Cimob.Controllers
                 var user = await _userManager.FindByNameAsync(HttpContext.User.Identity.Name);
                 ViewBag.user = user;
             }
-            
+
             // If we got this far, something failed, redisplay form
             return View(model);
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpGet]
         public async Task<IActionResult> ChangePassword()
         {
@@ -76,6 +102,12 @@ namespace Cimob.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
@@ -96,7 +128,7 @@ namespace Cimob.Controllers
             {
                 return View(model);
             }
-            
+
             return RedirectToAction(nameof(ChangePassword));
         }
 
