@@ -16,35 +16,45 @@ namespace Cimob.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Cimob.Controllers.DestinationController" /> class. 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <remarks></remarks>
         public DestinationController(ApplicationDbContext context)
         {
             _context = context;
         }
 
         // GET: Destination
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         public async Task<IActionResult> Index()
         {
             return View(await _context.Destinations.ToListAsync());
         }
 
-        // GET: Destination/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //// GET: Destination/Details/5
+        //public async Task<IActionResult> Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
   
-            var destination = await _context.Destinations
+        //    var destination = await _context.Destinations
      
-                .SingleOrDefaultAsync(m => m.DestinationId == id);
-            if (destination == null)
-            {
-                return NotFound();
-            }
+        //        .SingleOrDefaultAsync(m => m.DestinationId == id);
+        //    if (destination == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(destination);
-        }
+        //    return View(destination);
+        //}
 
         // GET: Destination/Create
         //public IActionResult Create()
@@ -138,32 +148,38 @@ namespace Cimob.Controllers
         //}
 
         // GET: Destination/Delete/5
+        /// <summary>
+        /// Returns the programs on the selected destination
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         public async Task<IActionResult> DestinationProgram(int? id)
         {
             var programas = await _context.Programs.Where(p => p.DestinationId == id).ToListAsync();
-            
+
 
             return View(programas);
         }
 
 
-        // POST: Destination/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var destination = await _context.Destinations.SingleOrDefaultAsync(m => m.DestinationId == id);
-            _context.Destinations.Remove(destination);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        //// POST: Destination/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    var destination = await _context.Destinations.SingleOrDefaultAsync(m => m.DestinationId == id);
+        //    _context.Destinations.Remove(destination);
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction(nameof(Index));
+        //}
 
-        private bool DestinationExists(int id)
-        {
-            return _context.Destinations.Any(e => e.DestinationId == id);
-        }
+        //private bool DestinationExists(int id)
+        //{
+        //    return _context.Destinations.Any(e => e.DestinationId == id);
+        //}
 
 
 
-        }
+    }
 }
