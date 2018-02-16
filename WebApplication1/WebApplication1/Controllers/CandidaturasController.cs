@@ -11,11 +11,21 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Cimob.Controllers
 {
+    /// <summary>
+    /// Candidatura Controller Class
+    /// </summary>
+    /// <remarks></remarks>
     public class CandidaturasController : Controller
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Cimob.Controllers.CandidaturasController" /> class. 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="userManager"></param>
+        /// <remarks></remarks>
         public CandidaturasController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
@@ -23,6 +33,11 @@ namespace Cimob.Controllers
         }
 
         // GET: Candidaturas
+        /// <summary>
+        /// Task to return the index of Candidatura.
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
         public async Task<IActionResult> Index()
         {
             var user = _userManager.GetUserId(HttpContext.User);
@@ -31,6 +46,12 @@ namespace Cimob.Controllers
         }
 
         // GET: Candidaturas/Details/5
+        /// <summary>
+        /// Return the Details of a specific Candidatura
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -50,6 +71,12 @@ namespace Cimob.Controllers
         }
 
         // GET: Candidaturas/Create
+        /// <summary>
+        /// Get the view to create a Candidatura from a Program. The Program id is passed as a paramter.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         public IActionResult Create(int? id)
         {
             ViewData["ProgramId"] = new SelectList(_context.Programs, "ProgramId", "Description", id);
@@ -59,6 +86,12 @@ namespace Cimob.Controllers
         // POST: Candidaturas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Post the candidatura created, binding the information passed in the paramters.
+        /// </summary>
+        /// <param name="candidatura"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CandidaturaId,ProgramId,UserId,StartDate,LastStateDate")] Candidatura candidatura)
@@ -86,7 +119,13 @@ namespace Cimob.Controllers
             return View(candidatura);
         }
 
-        
+
+        /// <summary>
+        /// Return the view for cancel a candidatura when its passed the id of Candidatura
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         public async Task<IActionResult> Cancel(int? id)
         {
             if (id == null)
@@ -105,6 +144,12 @@ namespace Cimob.Controllers
             return View(candidatura);
         }
 
+        /// <summary>
+        /// Confirm the Candidatura canceled by the user and redirect to index of Candidatura.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks></remarks>
         [HttpPost, ActionName("Cancel")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CancelConfirmed(int id)
